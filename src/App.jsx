@@ -1,12 +1,22 @@
-import './App.css'
+import React from 'react'
+import { BrowserRouter, useRoutes } from "react-router-dom";
+import Login from './components/login/Login'
+import Home from './pages/home/Home';
 
-const App = () => {
+export default function App() {
 
+  const AppRoutes = () => {
+    const routes = useRoutes([
+      { path: "/login", element: <Login /> },
+      { path: "/", element: <Home /> },
+      
+    ]);
+
+    return routes;
+  };
   return (
-    <div>
-      	<h1 className='bg-red-500'>holaa</h1>
-    </div>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   )
 }
-
-export default App;
