@@ -1,4 +1,5 @@
 import React from "react";
+import { Link,  } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouse,
@@ -9,50 +10,50 @@ import {
   faUsers,
   faGears,
 } from "@fortawesome/free-solid-svg-icons";
-import "./sidebar.css";
 
 export default function Sidebar() {
+
   return (
-    <aside>
-      <div className="icons">
-        <div className="icon-text">
-          <i className="icons-sidebar">
+    <aside className="w-full max-w-[20%] flex justify-center pt-4 sticky">
+      <div className="w-full max-w-[60%] flex justify-between flex-wrap absolute">
+        <div className="cursor-pointer w-full max-w-[45%] flex-col text-center text-azul-iconos px-4 rounded-md mb-4">
+          <Link className="text-4xl text-azul-iconos" to='/' >
             <FontAwesomeIcon icon={faHouse} />
-          </i>
+          </Link>
           <p>Inicio</p>
         </div>
-        <div className="icon-text">
-          <i className="icons-sidebar">
+        <div className="cursor-pointer w-full max-w-[45%] flex-col text-center text-azul-iconos px-4 rounded-md mb-4">
+          <Link className="text-4xl text-azul-iconos" to='/workers' >
             <FontAwesomeIcon icon={faUser} />
-          </i>
+          </Link>
           <p>Operarios</p>
         </div>
-        <div className="icon-text">
-          <i className="icons-sidebar">
+        <div className="cursor-pointer w-full max-w-[45%] flex-col text-center text-azul-iconos px-4 rounded-md mb-4">
+          <i className="text-4xl text-azul-iconos">
             <FontAwesomeIcon icon={faGears} />
           </i>
           <p>Maquinas</p>
         </div>
-        <div className="icon-text">
-          <i className="icons-sidebar">
+        <div className="cursor-pointer w-full max-w-[45%] flex-col text-center text-azul-iconos px-4 rounded-md mb-4">
+          <i className="text-4xl text-azul-iconos">
             <FontAwesomeIcon icon={faPlantWilt} />
           </i>
           <p>Procesos</p>
         </div>
-        <div className="icon-text">
-          <i className="icons-sidebar">
+        <div className="cursor-pointer w-full max-w-[45%] flex-col text-center text-azul-iconos px-4 rounded-md mb-4">
+          <i className="text-4xl text-azul-iconos">
             <FontAwesomeIcon icon={faNoteSticky} />
           </i>
           <p>Archivos</p>
         </div>
-        <div className="icon-text">
-          <i className="icons-sidebar">
+        <div className="cursor-pointer w-full max-w-[45%] flex-col text-center text-azul-iconos px-4 rounded-md mb-4">
+          <i className="text-4xl text-azul-iconos">
             <FontAwesomeIcon icon={faUsers} />
           </i>
           <p>Proveedores</p>
         </div>
-        <div className="icon-text">
-          <i className="icons-sidebar icon-chart">
+        <div className="cursor-pointer w-full max-w-[45%] flex-col text-center text-azul-iconos px-4 rounded-md mb-4">
+          <i className="text-4xl text-azul-iconos">
             <FontAwesomeIcon icon={faChartLine} />
           </i>
           <p>Estadisticas</p>

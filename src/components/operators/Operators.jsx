@@ -1,20 +1,20 @@
 import React from "react";
-import "./operators.css";
+
 import imgProfile from "../../../public/img-profile.jpg";
 
 export default function Operators({ nameOperator, numberDocument, post }) {
   return (
-    <div className="operator">
+    <div className="w-full max-w-[22%] bg-white rounded-xl flex flex-col p-4 items-center justify-center shadow-lg">
       <img
-        className="img-profile-operator"
+        className="w-24 h-24 rounded-full object-cover"
         src={imgProfile}
         alt="imagen de perfil"
       />
-      <p className="name-operator">NOMBRE</p>
+      <p className="text-lg font-medium">NOMBRE</p>
       <p> {nameOperator}</p>
-      <p className="number-document">DOCUMENTO DE IDENTIDAD</p>
+      <p className="font-medium text-center">DOCUMENTO DE IDENTIDAD</p>
       <p>{numberDocument}</p>
-      <p className="post">CARGO</p>
+      <p className="font-medium">CARGO</p>
       <p>{post}</p>
     </div>
   );

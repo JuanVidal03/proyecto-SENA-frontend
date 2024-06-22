@@ -1,17 +1,3 @@
-.file{
-    width: 100%;
-    max-width: 45%;
-    background-color: #fff;
-    display: flex;
-    justify-content: space-between;
-    border-radius: 10px;
-    font-weight: 500;
-}
-.conetnt-text{
-    width: 70%;
-    padding: 1rem;
-}
-
 .circle-file{
     width: 30%;
     background-color: #291cab;
@@ -23,10 +9,4 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.icon-files{
-    cursor: pointer;
-    font-size: 3.5rem;
-    color: #fff;
 }
