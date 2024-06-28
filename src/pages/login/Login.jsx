@@ -1,5 +1,5 @@
 import React from "react";
-import imgLogin from "../../../public/imgLogin.webp";
+import imgLogin from "../../../public/imgLogin.png";
 /*
 import logo from "../../../public/logo-indestec.png"
 */
@@ -102,7 +102,7 @@ export default function Login() {
             </form>
           </div>
         </div>
-        <figure className="w-full relative max-w-[50%] after:w-full after:h-full after:absolute after:left-0 after:top-0 after:bg-azul-gradiente after:content-[''] after:z-[2] after:rounded-tr-xl after:rounded-br-xl">
+        <figure className="w-full relative max-w-[50%] ">
           <img
             className="w-full h-full object-cover z-[1] absolute rounded-tr-xl rounded-br-xl"
             src={imgLogin}
