@@ -1,0 +1,10 @@
+.layout-sidebar-content{
+    display: flex;
+}
+
+.layout-content{
+    width: 100%;
+    max-width: 70%;
+    position: relative;
+    margin-top: -5%;
+}

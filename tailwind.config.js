@@ -9,7 +9,10 @@ export default {
       colors:{
         'azul-fuerte': '#000074',
         'azul-gradiente': '#0000749f',
-        'gris-suave': '#f2f2f2'
+        'gris-suave': '#f2f2f2',
+        'dark': "#1e1e1e",
+        'naranja-suave': "#FC7820",
+        'naranja-fuerte': "#C32227"
       },
       boxShadow:{
         'login': '0px 0px 10px rgba(0, 0, 0, 0.2)'

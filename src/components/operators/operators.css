@@ -1,0 +1,33 @@
+.operator {
+    width: 100%;
+    max-width: 22%;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px #00000011;
+  }
+  
+  .img-profile-operator {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    object-fit: cover;
+  }
+  .name-operator {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  
+  .number-document {
+    font-weight: 500;
+    text-align: center;
+  }
+  
+  .post {
+    font-weight: 500;
+  }
+  

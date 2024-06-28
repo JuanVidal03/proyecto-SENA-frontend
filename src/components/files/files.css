@@ -1,0 +1,33 @@
+.file{
+    width: 100%;
+    max-width: 45%;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    font-weight: 500;
+    box-shadow: 0 0 10px #00000011;
+}
+.conetnt-text{
+    width: 70%;
+    padding: 1rem;
+}
+
+.circle-file{
+    width: 30%;
+    background-color: #291cab;
+    border-left: 20px solid #000074;
+    border-top-left-radius: 100%;
+    border-bottom-left-radius: 100%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-files{
+    cursor: pointer;
+    font-size: 3.5rem;
+    color: #fff;
+}

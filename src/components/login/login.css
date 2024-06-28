@@ -1,10 +1,35 @@
-/* efectos de los circulos */
+
+.container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  position: absolute;
+  background-color: #f2f2f2;
+}
+
+
+.bottom {
+  display: flex;
+  justify-content: end;
+}
 .circle-top {
   width: 30rem;
   height: 30rem;
-  background-color: #291cab;
-  border-bottom: 30px solid #000074;
-  border-right: 30px solid #000074;
+  background-color: #FC7820;
+  border-bottom: 30px solid #C32227;
+  border-right: 30px solid #C32227;
   border-radius: 100%;
   position: relative;
   left: -6%;
@@ -14,9 +39,9 @@
 .circle-bottom {
   width: 20rem;
   height: 20rem;
-  background-color: #291cab;
-  border-top: 30px solid #000074;
-  border-left: 30px solid #000074;
+  background-color: #FC7820;
+  border-top: 30px solid #C32227;
+  border-left: 30px solid #C32227;
   border-top-left-radius: 100%;
   bottom: 4%;
 }

@@ -1,0 +1,55 @@
+.navbar {
+  width: 100%;
+  height: 42vh;
+  display: flex;
+  background-image: linear-gradient(to right, #291cab, #000074);
+  color: #fff;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  position: sticky;
+}
+.logo-indestec {
+  width: 90%;
+  object-fit: cover;
+}
+.icons-nav {
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.div-img {
+  width: 100%;
+  max-width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  padding-bottom: 1rem;
+}
+
+.container-navbar {
+  width: 100%;
+  max-width: 70%;
+  margin-top: 1rem;
+}
+
+.navbar-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ffffff70;
+}
+.menu {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.mensaje {
+  padding-top: 1rem;
+}
+.p1 {
+  font-size: 2rem;
+}
+.p2 {
+  color: #ffffffce;
+}
