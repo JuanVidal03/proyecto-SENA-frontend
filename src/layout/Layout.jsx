@@ -1,18 +1,18 @@
 import React from "react";
 import Sidebar from "../components/sidebar/Sidebar";
 import Navbar from "../components/navbar/Navbar";
-import './layout.css'
+
 
 export default function Layout({ children }) {
   return (
-    <div className="layout">
-      <div className="layout-navbar">
+    <div>
+      <div>
         <Navbar />
       </div>
-      <div className="layout-sidebar-content">
+      <div className="flex">
 
         <Sidebar />
-        <div className="layout-content">{children}</div>
+        <div className="w-full max-w-[70%] relative mt-[-8.5%]">{children}</div>
       </div>
     </div>
   );

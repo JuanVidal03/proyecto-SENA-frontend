@@ -9,6 +9,7 @@ export default {
       colors:{
         'azul-fuerte': '#000074',
         'azul-gradiente': '#0000749f',
+        'azul-iconos': '#291CAB',
         'gris-suave': '#f2f2f2',
         'dark': "#1e1e1e",
         'naranja-suave': "#FC7820",

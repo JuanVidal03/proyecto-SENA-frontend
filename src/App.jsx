@@ -1,10 +1,11 @@
 import { useContext } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from './components/login/Login'
 import Home from './pages/home/Home';
 
 import AuthContextProvider from './context/AuthProvider.context';
 import ProtectedRoutes from './routes/Protected.routes';
+import Login from './pages/login/Login';
+import Workers from './pages/workers/Workers';
 
 export default function App() {
 
