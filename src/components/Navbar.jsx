@@ -1,16 +1,14 @@
 import { useContext } from "react";
-import imgLogoIndestec from "../../../public/logo-indestec.svg";
-import User from "../user/User";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBars,
-  faArrowRightFromBracket,
-} from "@fortawesome/free-solid-svg-icons";
-
-import { logout } from "../../services/auth.services";
 import { useNavigate } from "react-router-dom";
 
-import { AuthContext } from "../../context/AuthProvider.context";
+import imgLogoIndestec from "../assets/logo-indestec.png";
+import User from "./User.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+
+import { logout } from "../services/auth.services";
+
+import { AuthContext } from "../context/AuthProvider.context";
 
 
 export default function Navbar() {
@@ -35,7 +33,7 @@ export default function Navbar() {
   return (
     <nav className="w-full h-[42vh] flex bg-gradient-to-r from-azul-iconos to-azul-fuerte text-white rounded-br-[50px] rounded-bl-[50px] sticky">
       <div className="w-full max-w-[20%] flex justify-center items-end pb-4">
-        <img className="w-[90%] object-cover" src={imgLogoIndestec} alt="" />
+        <img className="w-[45%] object-cover" src={imgLogoIndestec} alt="" />
       </div>
       <div className="w-full max-w-[70%] mt-4">
         <div className="flex justify-between items-center pb-4 border-b border-indigo-400">

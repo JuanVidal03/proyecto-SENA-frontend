@@ -1,5 +1,4 @@
-import React from 'react'
-import imgGrafica from '../../../public/grafica.png'
+import imgGrafica from '../../public/grafica.png'
 
 
 export default function Statistics() {

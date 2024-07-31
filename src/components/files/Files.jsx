@@ -1,6 +1,6 @@
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleDown } from "@fortawesome/free-regular-svg-icons";
+
 import './files.css'
 
 export default function Files() {

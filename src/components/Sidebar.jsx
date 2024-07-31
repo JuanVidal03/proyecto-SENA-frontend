@@ -1,5 +1,4 @@
-import React from "react";
-import { Link,  } from "react-router-dom";
+import { Link  } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouse,
@@ -11,7 +10,11 @@ import {
   faGears,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function Sidebar() {
+const Sidebar = () => {
+
+  const menuItems = [
+    {  }
+  ]
 
   return (
     <aside className="w-full max-w-[20%] flex justify-center pt-4 sticky">
@@ -32,7 +35,7 @@ export default function Sidebar() {
           <i className="text-4xl text-azul-iconos">
             <FontAwesomeIcon icon={faGears} />
           </i>
-          <p>Maquinas</p>
+          <p className="text-center">Maquinas</p>
         </div>
         <div className="cursor-pointer w-full max-w-[45%] flex-col text-center text-azul-iconos px-4 rounded-md mb-4">
           <i className="text-4xl text-azul-iconos">
@@ -62,3 +65,5 @@ export default function Sidebar() {
     </aside>
   );
 }
+
+export default Sidebar;

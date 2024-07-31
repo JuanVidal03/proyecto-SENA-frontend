@@ -27,9 +27,9 @@
 .circle-top {
   width: 30rem;
   height: 30rem;
-  background-color: #FC7820;
-  border-bottom: 30px solid #C32227;
-  border-right: 30px solid #C32227;
+  background-color: #291CAB;
+  border-bottom: 30px solid #000074;
+  border-right: 30px solid #000074;
   border-radius: 100%;
   position: relative;
   left: -6%;
@@ -39,9 +39,9 @@
 .circle-bottom {
   width: 20rem;
   height: 20rem;
-  background-color: #FC7820;
-  border-top: 30px solid #C32227;
-  border-left: 30px solid #C32227;
+  background-color: #291CAB;
+  border-top: 30px solid #000074;
+  border-left: 30px solid #000074;
   border-top-left-radius: 100%;
   bottom: 4%;
 }

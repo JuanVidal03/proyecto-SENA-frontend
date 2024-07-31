@@ -1,27 +1,15 @@
-import { useContext } from 'react'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './pages/home/Home';
-
+import { BrowserRouter } from "react-router-dom";
 import AuthContextProvider from './context/AuthProvider.context';
-import ProtectedRoutes from './routes/Protected.routes';
-import Login from './pages/login/Login';
-import Workers from './pages/workers/Workers';
+import AllRoutes from "./routes/AllRoutes.jsx";
 
-export default function App() {
-
+const App = () => {
 
   return (
     <AuthContextProvider>
       <BrowserRouter>
-        <Routes>
-          {/* rutas publicas */}
-          <Route path='/login' element={<Login/>}/>
-          {/* rutas privadas */}
-          |<Route element={<ProtectedRoutes/>}>
-            <Route path='/' element={<Home/>}/>
-          </Route>
-        </Routes>
+        <AllRoutes/>
       </BrowserRouter>
     </AuthContextProvider>
   )
 }
+export default App;

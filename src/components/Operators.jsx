@@ -1,8 +1,7 @@
-import React from "react";
+import imgProfile from "../../public/img-profile.jpg";
 
-import imgProfile from "../../../public/img-profile.jpg";
 
-export default function Operators({ nameOperator, numberDocument, post }) {
+const Operators = ({ nameOperator, numberDocument, post }) => {
   return (
     <div className="w-full max-w-[22%] bg-white rounded-xl flex flex-col p-4 items-center justify-center shadow-lg">
       <img
@@ -19,3 +18,5 @@ export default function Operators({ nameOperator, numberDocument, post }) {
     </div>
   );
 }
+
+export default Operators;
