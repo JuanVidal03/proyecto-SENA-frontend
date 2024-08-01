@@ -8,8 +8,10 @@ const Operators = lazy (() => import("../components/Operators.jsx"));
 const Files = lazy (() => import("../components/files/Files.jsx"));
 
 
-
 export default function Home() {
+
+  document.title = `Inicio | ${import.meta.env.VITE_COMPANY_NAME}`;
+
   return (
     <Suspense fallback={<Loader/>}>
       <DashboaradLayout>

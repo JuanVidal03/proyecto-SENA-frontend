@@ -16,6 +16,20 @@ export default function Navbar() {
   const navigate = useNavigate();
   const { setUser, setIsAuthenticated, user } = useContext(AuthContext);
 
+  const greetByTime = () => {
+    
+    const date = new Date();
+    
+    if (date.getHours() >= 3 && date.getHours() < 12) {
+      return { greet: `!Buenos dias, ${user.nombreCompleto}!`, text: "Que tengas un excelente día." }
+    } else if (date.getHours() >= 12 && date.getHours() < 19){
+      return { greet: `!Buenas tardes, ${user.nombreCompleto}!`, text: "Que tengas un excelente resto de día." }
+    } else {
+      return { greet: `!Buenas noches, ${user.nombreCompleto}!`, text: "Que tengas un excelente noche." }
+    }
+
+  }
+
   const handleLogout = async() => {
     try {
       
@@ -31,9 +45,9 @@ export default function Navbar() {
 
 
   return (
-    <nav className="w-full h-[42vh] flex bg-gradient-to-r from-azul-iconos to-azul-fuerte text-white rounded-br-[50px] rounded-bl-[50px] sticky">
-      <div className="w-full max-w-[20%] flex justify-center items-end pb-4">
-        <img className="w-[45%] object-cover" src={imgLogoIndestec} alt="" />
+    <nav className="w-full h-[60vh] flex bg-gradient-to-r from-azul-iconos to-azul-fuerte text-white rounded-br-[50px] rounded-bl-[50px]">
+      <div className="w-full max-w-[25%] flex justify-center items-end pb-10">
+        <img className="w-[45%] object-cover" src={imgLogoIndestec} alt="Logo de la empresa"/>
       </div>
       <div className="w-full max-w-[70%] mt-4">
         <div className="flex justify-between items-center pb-4 border-b border-indigo-400">
@@ -53,8 +67,8 @@ export default function Navbar() {
           </div>
         </div>
         <div className="pt-4">
-          <p className="text-4xl">Buenos días, {user.nombreCompleto}!</p>
-          <p className="text-slate-300">Que tengas un excelente día.</p>
+          <p className="text-3xl font-semibold">{ greetByTime().greet }</p>
+          <p className="text-slate-300">{ greetByTime().text }</p>
         </div>
       </div>
     </nav>

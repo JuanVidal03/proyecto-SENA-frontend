@@ -1,4 +1,4 @@
-import { Link  } from "react-router-dom";
+import { NavLink  } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouse,
@@ -13,54 +13,36 @@ import {
 const Sidebar = () => {
 
   const menuItems = [
-    {  }
+    { title: "Inicio", icon: faHouse, route: '/' },
+    { title: "Operarios", icon: faUser, route: '/operarios' },
+    { title: "Maquinas", icon: faGears, route: '/maquinas' },
+    { title: "Procesos", icon: faPlantWilt, route: '/procesos' },
+    { title: "Archivos", icon: faNoteSticky, route: '/archivos' },
+    { title: "Proveedores", icon: faUsers, route: '/proveedores' },
+    { title: "Estadisticas", icon: faChartLine, route: '/estadisticas' }
   ]
 
   return (
-    <aside className="w-full max-w-[20%] flex justify-center pt-4 sticky">
-      <div className="w-full max-w-[60%] flex justify-between flex-wrap absolute">
-        <div className="cursor-pointer w-full max-w-[45%] flex-col text-center text-azul-iconos px-4 rounded-md mb-4">
-          <Link className="text-4xl text-azul-iconos" to='/' >
-            <FontAwesomeIcon icon={faHouse} />
-          </Link>
-          <p>Inicio</p>
-        </div>
-        <div className="cursor-pointer w-full max-w-[45%] flex-col text-center text-azul-iconos px-4 rounded-md mb-4">
-          <Link className="text-4xl text-azul-iconos" to='/workers' >
-            <FontAwesomeIcon icon={faUser} />
-          </Link>
-          <p>Operarios</p>
-        </div>
-        <div className="cursor-pointer w-full max-w-[45%] flex-col text-center text-azul-iconos px-4 rounded-md mb-4">
-          <i className="text-4xl text-azul-iconos">
-            <FontAwesomeIcon icon={faGears} />
-          </i>
-          <p className="text-center">Maquinas</p>
-        </div>
-        <div className="cursor-pointer w-full max-w-[45%] flex-col text-center text-azul-iconos px-4 rounded-md mb-4">
-          <i className="text-4xl text-azul-iconos">
-            <FontAwesomeIcon icon={faPlantWilt} />
-          </i>
-          <p>Procesos</p>
-        </div>
-        <div className="cursor-pointer w-full max-w-[45%] flex-col text-center text-azul-iconos px-4 rounded-md mb-4">
-          <i className="text-4xl text-azul-iconos">
-            <FontAwesomeIcon icon={faNoteSticky} />
-          </i>
-          <p>Archivos</p>
-        </div>
-        <div className="cursor-pointer w-full max-w-[45%] flex-col text-center text-azul-iconos px-4 rounded-md mb-4">
-          <i className="text-4xl text-azul-iconos">
-            <FontAwesomeIcon icon={faUsers} />
-          </i>
-          <p>Proveedores</p>
-        </div>
-        <div className="cursor-pointer w-full max-w-[45%] flex-col text-center text-azul-iconos px-4 rounded-md mb-4">
-          <i className="text-4xl text-azul-iconos">
-            <FontAwesomeIcon icon={faChartLine} />
-          </i>
-          <p>Estadisticas</p>
-        </div>
+    <aside className="w-full max-w-[25%] flex justify-center pt-8 sticky">
+      <div className="w-full max-w-[80%] grid grid-cols-2 auto-rows-auto absolute gap-4 px-7">
+        {
+          menuItems.map((menuItem, index) => (
+            <NavLink
+              key={index}
+              className={({isActive}) => `${isActive ? "bg-azul-iconos" : "hover:scale-110"} w-[113px] transition-all h-[113px] flex flex-col justify-center items-center rounded-2xl group`}
+              to={menuItem.route}
+            >
+              {
+                ({isActive}) => (
+                  <div className="w-full text-center text-gray-500">
+                    <FontAwesomeIcon className={`${isActive ? "text-white font-bold" : "group-hover:text-azul-iconos"} text-4xl transition-all`} icon={menuItem.icon} />
+                    <p className={`${isActive ? "text-white font-bold" : "group-hover:text-azul-iconos"} mt-1 transition-all`}>{menuItem.title}</p>
+                  </div>
+                )
+              }
+            </NavLink>
+          ))
+        }
       </div>
     </aside>
   );

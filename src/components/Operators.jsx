@@ -1,4 +1,4 @@
-import imgProfile from "../../public/img-profile.jpg";
+import imgProfile from "../assets/img-profile.jpg";
 
 
 const Operators = ({ nameOperator, numberDocument, post }) => {

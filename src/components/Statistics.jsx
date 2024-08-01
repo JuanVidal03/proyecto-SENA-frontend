@@ -1,4 +1,4 @@
-import imgGrafica from '../../public/grafica.png'
+import imgGrafica from '../assets/grafica.png';
 
 
 export default function Statistics() {

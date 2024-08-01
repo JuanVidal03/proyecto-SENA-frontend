@@ -13,7 +13,9 @@ const DashboaradLayout = ({ children }) => {
         </div>
         <div className="flex">
           <Sidebar />
-          <div className="w-full max-w-[70%] relative mt-[-8.5%]">{children}</div>
+          <div className="w-full max-w-[70%] relative mt-[-14%]">
+            { children }
+          </div>
         </div>
       </div>
     </Suspense>

@@ -1,14 +1,22 @@
-import Layout from "../layout/Dashboarad.layout";
-import Operators from '../../components/operators/Operators';
+import { Suspense, lazy } from "react";
+
+const DashboaradLayout = lazy(() => import("../layout/Dashboarad.layout.jsx"))
+const Operators = lazy(() => import("../components/Operators.jsx"));
+const Loader = lazy(() => import("../components/loader/Loader.jsx"));
 
 
 const Workers = () => {
+
+  document.title = `Operarios | ${import.meta.env.VITE_COMPANY_NAME}`;
+
   return (
-    <Layout>
-      <div>
-        <Operators/>
-      </div>
-    </Layout>
+    <Suspense fallback={<Loader/>}>
+      <DashboaradLayout>
+        <div>
+          <h1>Hola mundo</h1>
+        </div>
+      </DashboaradLayout>
+    </Suspense>
   );
 }
 

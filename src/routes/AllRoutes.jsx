@@ -3,8 +3,10 @@ import { Route, Routes } from "react-router-dom";
 
 import ProtectedRoutes from "./Protected.routes.jsx";
 const Loader = lazy(() => import("../components/loader/Loader.jsx"));
-const Login = lazy(() => import("../pages/login/Login.jsx"));
+const Login = lazy(() => import("../pages/Login.jsx"));
+
 const Home = lazy(() => import("../pages/Home.jsx"));
+const Workers = lazy(() => import("../pages/Workers.jsx"));
 
 
 const AllRoutes = () => {
@@ -16,6 +18,12 @@ const AllRoutes = () => {
                 {/* rutas privadas */}
                 |<Route element={<ProtectedRoutes/>}>
                     <Route path='/' element={<Home/>}/>
+                    <Route path='/operarios' element={<Workers/>}/>
+                    {/* <Route path='/maquinas' element={<Workers/>}/>
+                    <Route path='/procesos' element={<Workers/>}/>
+                    <Route path='/archivos' element={<Workers/>}/>
+                    <Route path='/proveedores' element={<Workers/>}/>
+                    <Route path='/estadisticas' element={<Workers/>}/> */}
                 </Route>
             </Routes>
         </Suspense>
