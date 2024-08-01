@@ -19,13 +19,13 @@ export default {
         'login': '0px 0px 10px rgba(0, 0, 0, 0.2)'
       },
       keyframes:{
-        'bounce-login': {
-          '0%, 100%': {transform: 'translateY(15px) translateX(15px)'},
-          '50%': {transform: 'translateY(0px) translateX(0px)'},
+        'infinite-move-login': {
+          '0%': { backgroundPosition: '0% 50%' },
+          '100%': { backgroundPosition: '100% 50%' },
         },
       },
       animation:{
-        'bounce-login': 'bounce-login 3s infinite'
+        'infinite-move-login': 'infinite-move-login 10s linear infinite'
       }
     },
   },
