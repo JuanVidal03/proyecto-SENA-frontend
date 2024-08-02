@@ -8,8 +8,11 @@ const Login = lazy(() => import("../pages/Login.jsx"));
 const Home = lazy(() => import("../pages/Home.jsx"));
 const Workers = lazy(() => import("../pages/Workers.jsx"));
 
+import UserContextProvider from "../context/user.context.jsx";
+
 
 const AllRoutes = () => {
+
     return (
         <Suspense fallback={<Loader/>}>
             <Routes>
@@ -18,7 +21,11 @@ const AllRoutes = () => {
                 {/* rutas privadas */}
                 |<Route element={<ProtectedRoutes/>}>
                     <Route path='/' element={<Home/>}/>
-                    <Route path='/usuarios' element={<Workers/>}/>
+                    <Route path='/usuarios' element={
+                        <UserContextProvider>
+                            <Workers/>
+                        </UserContextProvider>
+                    }/>
                     {/* <Route path='/maquinas' element={<Workers/>}/>
                     <Route path='/procesos' element={<Workers/>}/>
                     <Route path='/archivos' element={<Workers/>}/>

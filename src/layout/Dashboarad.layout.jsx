@@ -13,7 +13,7 @@ const DashboaradLayout = ({ children }) => {
         </div>
         <div className="flex">
           <Sidebar />
-          <div className="w-full h-full max-w-[70%] mt-[-14%]">
+          <div className="w-full h-full max-w-[70%] mt-[-20%]">
             { children }
             <p className="text-gray-500 mt-12">© {new Date().getFullYear()} <span className="text-black font-semibold">{import.meta.env.VITE_COMPANY_NAME}</span>. Todos los derechos reservados.</p>
           </div>

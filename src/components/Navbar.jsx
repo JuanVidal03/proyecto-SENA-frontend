@@ -14,21 +14,7 @@ import { AuthContext } from "../context/AuthProvider.context";
 export default function Navbar() {
 
   const navigate = useNavigate();
-  const { setUser, setIsAuthenticated, user } = useContext(AuthContext);
-
-  const greetByTime = () => {
-    
-    const date = new Date();
-    
-    if (date.getHours() >= 3 && date.getHours() < 12) {
-      return { greet: `!Buenos dias, ${user.nombreCompleto}!`, text: "Que tengas un excelente día." }
-    } else if (date.getHours() >= 12 && date.getHours() < 19){
-      return { greet: `!Buenas tardes, ${user.nombreCompleto}!`, text: "Que tengas un excelente resto de día." }
-    } else {
-      return { greet: `!Buenas noches, ${user.nombreCompleto}!`, text: "Que tengas un excelente noche." }
-    }
-
-  }
+  const { setUser, setIsAuthenticated } = useContext(AuthContext);
 
   const handleLogout = async() => {
     try {
@@ -62,10 +48,6 @@ export default function Navbar() {
                 icon={faArrowRightFromBracket} />
             </i>
           </div>
-        </div>
-        <div className="pt-4">
-          <p className="text-3xl font-semibold">{ greetByTime().greet }</p>
-          <p className="text-slate-300">{ greetByTime().text }</p>
         </div>
       </div>
     </nav>

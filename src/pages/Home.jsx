@@ -1,4 +1,4 @@
-import { Suspense, lazy, useState, useEffect } from "react";
+import { Suspense, lazy, useState, useEffect, useContext } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 
 import '@splidejs/react-splide/css';
@@ -13,10 +13,28 @@ const Files = lazy (() => import("../components/files/Files.jsx"));
 
 import { getAllUsers } from "../services/user.services.js";
 
+import { AuthContext } from "../context/AuthProvider.context.jsx";
+
 
 export default function Home() {
 
   document.title = `Inicio | ${import.meta.env.VITE_COMPANY_NAME}`;
+
+  const { user } = useContext(AuthContext);
+
+  const greetByTime = () => {
+    
+    const date = new Date();
+    
+    if (date.getHours() >= 3 && date.getHours() < 12) {
+      return { greet: `!Buenos dias, ${user.nombreCompleto}!`, text: "Que tengas un excelente día." }
+    } else if (date.getHours() >= 12 && date.getHours() < 19){
+      return { greet: `!Buenas tardes, ${user.nombreCompleto}!`, text: "Que tengas un excelente resto de día." }
+    } else {
+      return { greet: `!Buenas noches, ${user.nombreCompleto}!`, text: "Que tengas un excelente noche." }
+    }
+
+  }
 
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -40,7 +58,6 @@ export default function Home() {
   }, []);
 
 
-
   return (
     <Suspense fallback={<Loader/>}>
       <DashboaradLayout>
@@ -48,11 +65,18 @@ export default function Home() {
             loading ? <Loader/> : (
 
             <main>
+
+              <div className="pb-8">
+                <h1 className="text-4xl font-semibold text-white">{ greetByTime().greet }</h1>
+                <p className="text-slate-300">{ greetByTime().text }</p>
+              </div>
+
               <div className="mb-8">
                 <Stadistics />
               </div>
+
               <section className="mb-8">
-                <h2 className="text-[2rem] font-semibold mb-[1rem]">MAQUINAS</h2>
+                <h2 className="text-4xl font-semibold mb-4">Maquinas</h2>
                 <div className="flex justify-between gap-[2rem]">
                   <Machines
                     numberMachine="1"
@@ -77,7 +101,7 @@ export default function Home() {
                 </div>
               </section>
               <section className="mb-8">
-                <h2 className="text-[2rem] font-semibold mb-[1rem]">USUARIOS</h2>
+                <h2 className="text-4xl font-semibold mb-4">Usuarios</h2>
                 <div>
                   <Splide
                     options={{
@@ -101,7 +125,7 @@ export default function Home() {
                             userType={user.tipoUsuario}
                             img={user.foto}
                             status={user.estado}
-                            isInCarousel={false}
+                            iconsActive={false}
                           />
                         </SplideSlide>
                       ))
@@ -110,7 +134,7 @@ export default function Home() {
                 </div>
               </section>
               <section className="mb-[1rem]">
-                <h2 className="text-[2rem] font-semibold mb-[1rem]">ARCHIVOS</h2>
+                <h2 className="text-4xl font-semibold mb-4">Archivos</h2>
                 <div className="flex justify-between gap-[2rem] flex-wrap">
                   <Files/>
                   <Files/>
