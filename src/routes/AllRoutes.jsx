@@ -18,7 +18,7 @@ const AllRoutes = () => {
                 {/* rutas privadas */}
                 |<Route element={<ProtectedRoutes/>}>
                     <Route path='/' element={<Home/>}/>
-                    <Route path='/operarios' element={<Workers/>}/>
+                    <Route path='/usuarios' element={<Workers/>}/>
                     {/* <Route path='/maquinas' element={<Workers/>}/>
                     <Route path='/procesos' element={<Workers/>}/>
                     <Route path='/archivos' element={<Workers/>}/>

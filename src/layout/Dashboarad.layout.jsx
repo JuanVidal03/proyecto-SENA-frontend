@@ -7,13 +7,13 @@ const Loader = lazy(() => import("../components/loader/Loader.jsx"));
 const DashboaradLayout = ({ children }) => {
   return (
     <Suspense fallback={<Loader/>}>
-      <div className="pb-8 bg-[#F8F8FB] relative">
+      <div className="pb-8 bg-[#F8F8FB]">
         <div>
           <Navbar />
         </div>
-        <div className="flex relative">
+        <div className="flex">
           <Sidebar />
-          <div className="w-full h-full max-w-[70%] relative mt-[-14%]">
+          <div className="w-full h-full max-w-[70%] mt-[-14%]">
             { children }
             <p className="text-gray-500 mt-12">© {new Date().getFullYear()} <span className="text-black font-semibold">{import.meta.env.VITE_COMPANY_NAME}</span>. Todos los derechos reservados.</p>
           </div>

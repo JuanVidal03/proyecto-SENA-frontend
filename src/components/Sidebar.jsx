@@ -14,11 +14,10 @@ const Sidebar = () => {
 
   const menuItems = [
     { title: "Inicio", icon: faHouse, route: '/' },
-    { title: "Operarios", icon: faUser, route: '/operarios' },
+    { title: "Usuarios", icon: faUser, route: '/usuarios' },
     { title: "Maquinas", icon: faGears, route: '/maquinas' },
     { title: "Procesos", icon: faPlantWilt, route: '/procesos' },
     { title: "Archivos", icon: faNoteSticky, route: '/archivos' },
-    { title: "Proveedores", icon: faUsers, route: '/proveedores' },
     { title: "Estadisticas", icon: faChartLine, route: '/estadisticas' }
   ]
 
