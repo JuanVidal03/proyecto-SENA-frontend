@@ -16,7 +16,8 @@ export default {
         'naranja-fuerte': "#C32227"
       },
       boxShadow:{
-        'login': '0px 0px 10px rgba(0, 0, 0, 0.2)'
+        'userCard': '0 .75rem 1.5rem rgba(18,38,63,.03)',
+        'userCardHover': '0 1rem 3rem rgba(31,45,61,.125)!important'
       },
       keyframes:{
         'infinite-move-login': {
