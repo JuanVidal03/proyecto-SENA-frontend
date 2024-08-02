@@ -1,7 +1,6 @@
 import { Suspense, lazy } from "react";
 
 const DashboaradLayout = lazy(() => import("../layout/Dashboarad.layout.jsx"))
-const Operators = lazy(() => import("../components/Operators.jsx"));
 const Loader = lazy(() => import("../components/loader/Loader.jsx"));
 
 

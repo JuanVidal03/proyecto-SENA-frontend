@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import imgLogoIndestec from "../assets/logo-indestec.png";
 import User from "./User.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 import { logout } from "../services/auth.services";
 
@@ -54,10 +54,7 @@ export default function Navbar() {
           <div className="logo-nosotros">
             <h4>LOGO NOSOTROS</h4>
           </div>
-          <div className="flex gap-6">
-            <i className="text-2xl cursor-pointer">
-              <FontAwesomeIcon icon={faBars} />
-            </i>
+          <div className="flex gap-6 items-center">
             <User />
             <i className="text-2xl cursor-pointer">
               <FontAwesomeIcon

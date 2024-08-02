@@ -3,7 +3,7 @@ import imgProfile from "../assets/img-profile.jpg";
 
 const UserCard = ({ name, username, document, userType, img, status, phone, address, email }) => {
   return (
-    <div className="w-full max-w-[22%] h-[350px] bg-white rounded-lg flex flex-col px-4 py-8 items-center justify-center shadow-userCard boder transition-all hover:shadow-userCardHover">
+    <div className="w-full h-[350px] bg-white rounded-lg flex flex-col px-4 py-8 items-center justify-center shadow-userCard boder transition-all hover:shadow-userCardHover">
       <figure className="relative mb-4">
         <img
           className="w-24 h-24 rounded-full object-cover"
