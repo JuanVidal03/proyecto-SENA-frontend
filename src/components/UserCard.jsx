@@ -29,8 +29,8 @@ const UserCard = ({ name, username, document, userType, img, status, phone, addr
         )
       }
       
+      <p className="text-gray-500 font-bold">{ userType }</p>
       <p className="text-gray-500">CC: { document }</p>
-      <p className="text-gray-500">{ userType }</p>
       <p className="text-gray-500">{ address }</p>
       <p className="text-gray-500">{ email }</p>
     </div>

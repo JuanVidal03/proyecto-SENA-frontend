@@ -7,7 +7,6 @@ import { AuthContext } from "../context/AuthProvider.context";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { icon } from "@fortawesome/fontawesome-svg-core";
 
 const LoginForm = () => {
 

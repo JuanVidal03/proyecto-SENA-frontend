@@ -46,6 +46,9 @@ const AuthContextProvider = ({children}) => {
 
     }, []);
 
+    //manejar el estado del modal
+    const [modalState, setModalState] = useState(false);
+
 
     return (
         <AuthContext.Provider value={{
@@ -54,7 +57,9 @@ const AuthContextProvider = ({children}) => {
             loading,
             setLoading,
             user,
-            setUser
+            setUser,
+            modalState,
+            setModalState
         }}>
             {children}
         </AuthContext.Provider>

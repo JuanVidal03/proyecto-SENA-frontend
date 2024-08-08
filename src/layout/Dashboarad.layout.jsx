@@ -7,7 +7,7 @@ const Loader = lazy(() => import("../components/loader/Loader.jsx"));
 const DashboaradLayout = ({ children }) => {
   return (
     <Suspense fallback={<Loader/>}>
-      <div className="pb-8 bg-[#F8F8FB]">
+      <div className="pb-8 bg-[#F8F8FB] relative">
         <div>
           <Navbar />
         </div>
