@@ -60,7 +60,9 @@ const Workers = () => {
     <Suspense fallback={<Loader/>}>
       <DashboaradLayout>
         <div>
-          <Modal content={<FormUser isUpdate={true}/>}/>
+
+          <Modal content={<FormUser isUpdate={false}/>}/>
+
           <div className="flex justify-between items-center">
             <h1 className="text-3xl text-white">Usuarios registrados</h1>
             <div className="flex items-center gap-6">

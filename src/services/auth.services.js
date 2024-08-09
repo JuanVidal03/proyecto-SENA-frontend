@@ -1,5 +1,17 @@
 import axios from "./axios";
 
+export const register = async(data) => {
+    try {
+        
+        const createdUser = await axios.post('/register', data);
+        return createdUser;
+
+
+    } catch (error) {
+        console.log("Error al registrar el usuario.", error);
+    }
+}
+
 export const login = async(credentials) => {
     try {
 

@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 
+import profileImg from "../assets/login-bg.jpg"
+
 import { AuthContext } from "../context/AuthProvider.context.jsx";
 
-import profileImg from "../assets/login-bg.jpg"
+import { register as registerService } from "../services/auth.services.js";
 
 const FormUser = ({ isUpdate }) => {
 
@@ -17,7 +19,9 @@ const FormUser = ({ isUpdate }) => {
         data.estado = JSON.parse(data.estado);
         
         try {
+            const registerResponse = await registerService(data);
             console.log(data);
+            console.log(registerResponse);
             setModalState(false);
             
         } catch (error) {
