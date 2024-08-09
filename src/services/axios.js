@@ -1,5 +1,5 @@
 import axios from "axios";
-const urlBase = 'http://localhost:8000/api';
+const urlBase = import.meta.env.VITE_BACKEND_URL;
 
 const axiosConfig = axios.create({
     baseURL: urlBase,

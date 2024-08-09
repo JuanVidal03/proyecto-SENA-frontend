@@ -1,9 +1,8 @@
-import React from "react";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGears } from "@fortawesome/free-solid-svg-icons";
 
-export default function Machines({ numberMachine, state, operator }) {
+
+const Machines = ({ numberMachine, state, operator }) => {
   return (
     <div className="w-full max-w-[22%] bg-white rounded-xl flex flex-col p-4 items-center justify-center shadow-lg">
       <i className="text-7xl">
@@ -17,3 +16,5 @@ export default function Machines({ numberMachine, state, operator }) {
     </div>
   );
 }
+
+export default Machines;

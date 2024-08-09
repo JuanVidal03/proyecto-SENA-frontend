@@ -16,16 +16,17 @@ export default {
         'naranja-fuerte': "#C32227"
       },
       boxShadow:{
-        'login': '0px 0px 10px rgba(0, 0, 0, 0.2)'
+        'userCard': '0 .75rem 1.5rem rgba(18,38,63,.03)',
+        'userCardHover': '0 1rem 3rem rgba(31,45,61,.125)!important'
       },
       keyframes:{
-        'bounce-login': {
-          '0%, 100%': {transform: 'translateY(15px) translateX(15px)'},
-          '50%': {transform: 'translateY(0px) translateX(0px)'},
+        'infinite-move-login': {
+          '0%': { backgroundPosition: '0% 50%' },
+          '100%': { backgroundPosition: '100% 50%' },
         },
       },
       animation:{
-        'bounce-login': 'bounce-login 3s infinite'
+        'infinite-move-login': 'infinite-move-login 10s linear infinite'
       }
     },
   },
