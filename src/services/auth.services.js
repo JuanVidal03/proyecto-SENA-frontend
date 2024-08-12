@@ -6,7 +6,6 @@ export const register = async(data) => {
         const createdUser = await axios.post('/register', data);
         return createdUser;
 
-
     } catch (error) {
         console.log("Error al registrar el usuario.", error);
     }
@@ -20,6 +19,7 @@ export const login = async(credentials) => {
         
     } catch (error) {
         console.log("Error al ingresar a la aplicacion.", error);
+        return error;
     }
 }
 

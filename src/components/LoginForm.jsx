@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 import { login } from "../services/auth.services";
 import { AuthContext } from "../context/AuthProvider.context";
@@ -30,6 +31,7 @@ const LoginForm = () => {
 
       setUser(null);
       setIsAuthenticated(false);
+      toast.error(error.message);
       console.log(error);
     
     }
@@ -39,6 +41,7 @@ const LoginForm = () => {
     return (
 
       <div className="text-dark w-full">
+        <ToastContainer/>
 
           <form
             className="w-full flex flex-col"
