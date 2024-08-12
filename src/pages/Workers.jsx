@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect, useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { ToastContainer, toast } from "react-toastify";
 
 const DashboaradLayout = lazy(() => import("../layout/Dashboarad.layout.jsx"))
 const Loader = lazy(() => import("../components/loader/Loader.jsx"));
@@ -20,8 +21,7 @@ const Workers = () => {
 
   const [loading, setLoading] = useState(false);
   
-  // manejando el estado del modal
-  const { modalState, setModalState } = useContext(AuthContext);
+  const { setModalState } = useContext(AuthContext);
 
 
   const { users, setUsers } = useContext(UserContext);
@@ -34,7 +34,7 @@ const Workers = () => {
       try {
         
         const usersService = await getAllUsers();
-        setUsers(usersService);
+        setUsers(usersService.users);
         setLoading(false);
 
       } catch (error) {
@@ -55,10 +55,12 @@ const Workers = () => {
     }
   }
 
-
   return (
     <Suspense fallback={<Loader/>}>
       <DashboaradLayout>
+
+        <ToastContainer/>
+        
         <div>
 
           <Modal content={<FormUser isUpdate={false}/>}/>
@@ -88,6 +90,7 @@ const Workers = () => {
                   users?.map(user => (
                     <UserCard
                       key={user._id}
+                      id={user._id}
                       name={user.nombreCompleto}
                       username={user.username}
                       userType={user.tipoUsuario}
@@ -101,7 +104,7 @@ const Workers = () => {
                     />
                   ))
                 }
-                <div onClick={() => setModalState(true)} className="w-full rounded-lg flex justify-center items-center border-dotted border-2 transition-all cursor-pointer hover:bg-gray-100">
+                <div onClick={() => setModalState(true)} className="w-full h-[400px] rounded-lg flex justify-center items-center border-dotted border-2 transition-all cursor-pointer hover:bg-gray-100">
                   <div className="flex flex-col justify-center items-center gap-2">
                     <FontAwesomeIcon className="text-3xl text-gray-500" icon={faPlus}/>
                     <p className="font-semibold text-gray-500">Crear usuario</p>

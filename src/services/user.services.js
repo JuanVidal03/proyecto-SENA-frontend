@@ -11,3 +11,15 @@ export const getAllUsers = async() => {
         return error;
     }
 }
+
+export const deleteUserById = async(id) => {
+    try {
+        
+        const result = await axios.delete(`/usuarios/${id}`);
+        return result;
+
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+}

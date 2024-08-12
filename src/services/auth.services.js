@@ -18,7 +18,6 @@ export const login = async(credentials) => {
         return user;
         
     } catch (error) {
-        console.log("Error al ingresar a la aplicacion.", error);
         return error;
     }
 }
@@ -31,6 +30,7 @@ export const verifyToken = () => {
 
     } catch (error) {
         console.log("Error al verificar el token", error);
+        return error;
     }
 }
 

@@ -20,20 +20,23 @@ const LoginForm = () => {
 
   const handleLogin = handleSubmit(async(data) => {
 
+    const loginResponse = await login(data);
+    
     try {
-
-      const loginResponse = await login(data);
+      
       setUser(loginResponse.data.user);
       setIsAuthenticated(true);
       navigate("/");
 
     } catch (error) {
-
+      
       setUser(null);
       setIsAuthenticated(false);
-      toast.error(error.message);
-      console.log(error);
-    
+      
+      if (loginResponse.response.status === 404 || loginResponse.response.status === 400){ 
+        toast.error(loginResponse.response.data.message);
+      }
+
     }
 
   });

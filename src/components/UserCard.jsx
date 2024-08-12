@@ -1,8 +1,37 @@
+import { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faPhone, faTrash } from "@fortawesome/free-solid-svg-icons";
 
+import { deleteUserById } from "../services/user.services.js";
 
-const UserCard = ({ name, username, document, userType, img, status, phone, address, email, iconsActive }) => {
+import { UserContext } from "../context/user.context.jsx";
+import { toast } from "react-toastify";
+
+
+const UserCard = ({ name, username, document, userType, img, status, phone, address, email, iconsActive, id }) => {
+
+  const { setUsers, users, setToastMessage } = useContext(UserContext);
+
+  const deleteUser = async() => {
+
+    try {
+
+      const deleteUserResponse = await deleteUserById(id);
+
+      if (deleteUserResponse.status === 200) {
+        setToastMessage(deleteUserResponse.data.message);
+        toast.success(deleteUserResponse.data.message);
+      }
+
+      const findUserIndex = users.findIndex(user => user.id === id);
+      users.splice(findUserIndex, 1);
+      setUsers([...users]);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
   return (
     <div className="w-full h-[400px] bg-white rounded-lg flex flex-col px-4 py-8 items-center justify-center shadow-userCard boder transition-all hover:shadow-userCardHover">
@@ -24,7 +53,7 @@ const UserCard = ({ name, username, document, userType, img, status, phone, addr
               <FontAwesomeIcon className="cursor-pointer text-gray-500" icon={faPhone}/>
             </a>
             <FontAwesomeIcon className="cursor-pointer text-gray-500" icon={faPenToSquare}/>
-            <FontAwesomeIcon className="cursor-pointer text-gray-500" icon={faTrash}/>
+            <FontAwesomeIcon onClick={deleteUser} className="cursor-pointer text-gray-500" icon={faTrash}/>
           </div>
         )
       }

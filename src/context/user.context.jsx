@@ -5,11 +5,14 @@ export const UserContext = createContext();
 const UserContextProvider = ({ children }) => {
 
     const [users, setUsers] = useState([]);
+    const [toastMessage, setToastMessage] = useState("");
 
     return (
         <UserContext.Provider value={{
             users,
-            setUsers
+            setUsers,
+            toastMessage,
+            setToastMessage
         }}>
             { children }
         </UserContext.Provider>

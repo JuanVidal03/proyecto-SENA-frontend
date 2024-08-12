@@ -27,11 +27,11 @@ export default function Home() {
     const date = new Date();
     
     if (date.getHours() >= 3 && date.getHours() < 12) {
-      return { greet: `!Buenos dias, ${user.nombreCompleto}!`, text: "Que tengas un excelente día." }
+      return { greet: `¡Buenos dias, ${user.nombreCompleto}!`, text: "Que tengas un excelente día." }
     } else if (date.getHours() >= 12 && date.getHours() < 19){
-      return { greet: `!Buenas tardes, ${user.nombreCompleto}!`, text: "Que tengas un excelente resto de día." }
+      return { greet: `¡Buenas tardes, ${user.nombreCompleto}!`, text: "Que tengas un excelente resto de día." }
     } else {
-      return { greet: `!Buenas noches, ${user.nombreCompleto}!`, text: "Que tengas un excelente noche." }
+      return { greet: `¡Buenas noches, ${user.nombreCompleto}!`, text: "Que tengas un excelente noche." }
     }
 
   }
@@ -45,7 +45,7 @@ export default function Home() {
       try {
 
         const usersService = await getAllUsers();
-        setUsers(usersService);
+        setUsers(usersService.users);
         setLoading(false);
 
       } catch (error) {
@@ -126,7 +126,7 @@ export default function Home() {
                             img={user.foto}
                             status={user.estado}
                             iconsActive={false}
-                          />
+                            />
                         </SplideSlide>
                       ))
                     }
