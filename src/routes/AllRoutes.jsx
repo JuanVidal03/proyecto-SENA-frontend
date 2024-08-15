@@ -9,6 +9,7 @@ const Home = lazy(() => import("../pages/Home.jsx"));
 const Workers = lazy(() => import("../pages/Workers.jsx"));
 
 import UserContextProvider from "../context/user.context.jsx";
+import SharedContextProvider from "../context/shared.context.jsx";
 
 
 const AllRoutes = () => {
@@ -20,7 +21,11 @@ const AllRoutes = () => {
                 <Route path='/login' element={<Login/>}/>
                 {/* rutas privadas */}
                 |<Route element={<ProtectedRoutes/>}>
-                    <Route path='/' element={<Home/>}/>
+                    <Route path='/' element={
+                        <SharedContextProvider>
+                            <Home/>
+                        </SharedContextProvider>
+                    }/>
                     <Route path='/usuarios' element={
                         <UserContextProvider>
                             <Workers/>

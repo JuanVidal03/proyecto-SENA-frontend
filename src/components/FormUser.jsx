@@ -1,36 +1,52 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
 
 import profileImg from "../assets/login-bg.jpg"
+import Loader from "./loader/Loader.jsx";
 
 import { AuthContext } from "../context/AuthProvider.context.jsx";
+import { UserContext } from "../context/user.context.jsx";
 
 import { register as registerService } from "../services/auth.services.js";
 
 const FormUser = ({ isUpdate }) => {
 
     const { setModalState } = useContext(AuthContext);
+    const { users, setUsers } = useContext(UserContext);
+
+    const [isPasswordActive, setIsPasswordActive] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const { handleSubmit, formState:{errors}, register } = useForm();
 
     const handleFormUser = handleSubmit(async(data) => {
 
-        data.telefono = parseInt(data.telefono);
+        setLoading(true);
         data.estado = JSON.parse(data.estado);
         
         try {
             const registerResponse = await registerService(data);
-            console.log(data);
-            console.log(registerResponse);
+
+            if(registerResponse.status !== 200 || !registerResponse.status) return toast.error("Error al crear el usuario.");
+
+            setUsers([...users, registerResponse.data]);
+
+            setLoading(false);
             setModalState(false);
+            toast.success("Usuario registrado exitosamente!");
             
         } catch (error) {
+            setLoading(false);
             console.log(error);
         }
     })
 
     return (
         <div>
+            { loading && <Loader/> }
             <h3 className="font-semibold text-2xl my-2">{ isUpdate ? "Actualizar usuario" : "Añadir usuario"}</h3>
             {
                 isUpdate && (
@@ -67,6 +83,31 @@ const FormUser = ({ isUpdate }) => {
                 </div>
 
                 <div className="flex w-full flex-col gap-1 pb-4 border-b">
+                    <label>Correo eléctronico: *</label>
+                    <input
+                        className="border p-2 rounded-lg border-gray-200 focus:outline-none transition-all outline-none focus:bg-gray-100"
+                        type="email"
+                        name="email"
+                        id="email"
+                        autoComplete="off"
+                        placeholder="carlosperez19@gmail.com"
+                        {
+                            ...register("email", {
+                                required: {
+                                    value: true,
+                                    message: "Este campo es obligatorio."
+                                },
+                                pattern: {
+                                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i,
+                                    message: "El formato del email no es válido."
+                                }
+                            })
+                        }
+                    />
+                    { errors.email && ( <span className="text-red-500">{ errors.email.message }</span> ) }
+                </div>
+
+                <div className="flex w-full flex-col gap-1 pb-4 border-b">
                     <label>Nombre completo: *</label>
                     <input
                         className="border p-2 rounded-lg border-gray-200 focus:outline-none transition-all outline-none focus:bg-gray-100"
@@ -85,6 +126,48 @@ const FormUser = ({ isUpdate }) => {
                         }
                     />
                     { errors.nombreCompleto && ( <span className="text-red-500">{ errors.nombreCompleto.message }</span> ) }
+                </div>
+
+                <div className="flex w-full flex-col gap-1 pb-4 border-b relative">
+                    <label>Contraseña: *</label>
+                    <input
+                        className="border p-2 rounded-lg border-gray-200 focus:outline-none transition-all outline-none focus:bg-gray-100"
+                        type={`${isPasswordActive ? "password" : "text"}`}
+                        name="password"
+                        id="password"
+                        autoComplete="off"
+                        placeholder="•••••••••••"
+                        {...register("password", {
+                            required: {
+                              value: true,
+                              message: "Por favor ingrese una contraseña.",
+                            },
+                            minLength: {
+                              value: 8,
+                              message:
+                                "La contraseña debe contener minimo 8 caracteres.",
+                            },
+                        })}
+                    />
+                    { errors.password && ( <span className="text-red-500">{ errors.password.message }</span> ) }
+
+                    <div className="absolute top-[45%] right-[3%]">
+                        {
+                            isPasswordActive ? (
+                                <FontAwesomeIcon
+                                onClick={() => setIsPasswordActive(false)}
+                                className="text-xl text-gray-500 relative z-40"
+                                icon={faEye}
+                                />
+                            ) : (
+                                <FontAwesomeIcon
+                                onClick={() => setIsPasswordActive(true)}
+                                className="text-xl text-gray-500 relative z-40"
+                                icon={faEyeSlash}
+                                />
+                            )
+                        }
+                    </div>
                 </div>
 
                 <div className="flex gap-4 border-b pb-4">
@@ -174,31 +257,6 @@ const FormUser = ({ isUpdate }) => {
                         }
                     />
                     { errors.direccion && ( <span className="text-red-500">{ errors.direccion.message }</span> ) }
-                </div>
-
-                <div className="flex w-full flex-col gap-1 pb-4 border-b">
-                    <label>Correo eléctronico: *</label>
-                    <input
-                        className="border p-2 rounded-lg border-gray-200 focus:outline-none transition-all outline-none focus:bg-gray-100"
-                        type="email"
-                        name="email"
-                        id="email"
-                        autoComplete="off"
-                        placeholder="carlosperez19@gmail.com"
-                        {
-                            ...register("email", {
-                                required: {
-                                    value: true,
-                                    message: "Este campo es obligatorio."
-                                },
-                                pattern: {
-                                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i,
-                                    message: "El formato del email no es válido."
-                                }
-                            })
-                        }
-                    />
-                    { errors.email && ( <span className="text-red-500">{ errors.email.message }</span> ) }
                 </div>
 
                 <div className="flex gap-4 border-b pb-4">

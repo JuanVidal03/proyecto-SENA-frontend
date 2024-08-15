@@ -23,7 +23,7 @@ export default function Login() {
           <LoginForm/>
 
         </div>  
-        <div className="w-[60%] h-screen bg-gradient-to-r from-azul-iconos to-azul-fuerte animate-infinite-move-login"></div>
+        <div className="w-[60%] h-screen bg-200 bg-gradient-to-r from-azul-iconos via-[#3D3DBF] to-[#1F1F97] animate-moveLoginBg"></div>
       </section>
 
     </Suspense>

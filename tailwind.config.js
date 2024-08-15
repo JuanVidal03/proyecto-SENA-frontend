@@ -19,14 +19,18 @@ export default {
         'userCard': '0 .75rem 1.5rem rgba(18,38,63,.03)',
         'userCardHover': '0 1rem 3rem rgba(31,45,61,.125)!important'
       },
+      backgroundSize:{
+        '200': '200% 200%'
+      },
       keyframes:{
-        'infinite-move-login': {
+        'moveLoginBg': {
           '0%': { backgroundPosition: '0% 50%' },
-          '100%': { backgroundPosition: '100% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
         },
       },
       animation:{
-        'infinite-move-login': 'infinite-move-login 10s linear infinite'
+        'moveLoginBg': 'moveLoginBg 2s ease infinite'
       }
     },
   },

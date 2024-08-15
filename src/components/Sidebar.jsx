@@ -28,7 +28,7 @@ const Sidebar = () => {
           menuItems.map((menuItem, index) => (
             <NavLink
               key={index}
-              className={({isActive}) => `${isActive ? "bg-azul-iconos" : "hover:scale-110"} w-[113px] transition-all h-[113px] flex flex-col justify-center items-center rounded-2xl group`}
+              className={({isActive}) => `${isActive ? "bg-azul-iconos" : "text-azul-iconos"} w-[113px] transition-all h-[113px] flex flex-col justify-center items-center rounded-2xl group`}
               to={menuItem.route}
             >
               {

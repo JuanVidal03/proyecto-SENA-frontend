@@ -126,7 +126,7 @@ export default function Home() {
                             img={user.foto}
                             status={user.estado}
                             iconsActive={false}
-                            />
+                          />
                         </SplideSlide>
                       ))
                     }

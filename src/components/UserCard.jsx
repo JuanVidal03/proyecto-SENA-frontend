@@ -16,17 +16,23 @@ const UserCard = ({ name, username, document, userType, img, status, phone, addr
 
     try {
 
-      const deleteUserResponse = await deleteUserById(id);
+      const deleteConfirmation = confirm("¿Estas serguro de eliminar el usuario?");
 
-      if (deleteUserResponse.status === 200) {
-        setToastMessage(deleteUserResponse.data.message);
-        toast.success(deleteUserResponse.data.message);
+      if(deleteConfirmation){
+
+        const deleteUserResponse = await deleteUserById(id);
+
+        if (deleteUserResponse.status === 200) {
+          setToastMessage(deleteUserResponse.data.message);
+          toast.success(deleteUserResponse.data.message || "Error al eliminar el usuario.");
+        }
+  
+        const findUserIndex = users.findIndex(user => user._id === id);
+        users.splice(findUserIndex, 1);
+        setUsers([...users]);
+
       }
 
-      const findUserIndex = users.findIndex(user => user.id === id);
-      users.splice(findUserIndex, 1);
-      setUsers([...users]);
-      
     } catch (error) {
       console.log(error);
     }
