@@ -120,7 +120,7 @@ const LoginForm = () => {
 
             <div className="flex justify-center items-center">
               <button
-                className="border-none transition-all bg-dark font-bold text-white text-[1rem] cursor-pointer py-3 w-full rounded-lg mt-2 hover:-translate-y-1"
+                className="border-none transition-all bg-dark font-bold text-white text-[1rem] cursor-pointer py-3 w-full rounded-lg mt-2 hover:shadow-2xl"
                 type="submit"
               >
                 Ingresa

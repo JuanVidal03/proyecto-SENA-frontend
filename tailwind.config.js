@@ -7,9 +7,9 @@ export default {
   theme: {
     extend: {
       colors:{
-        'azul-fuerte': '#000074',
+        'azul-fuerte': '#051061',
         'azul-gradiente': '#0000749f',
-        'azul-iconos': '#291CAB',
+        'azul-iconos': '#041090',
         'gris-suave': '#f2f2f2',
         'dark': "#1e1e1e",
         'naranja-suave': "#FC7820",
@@ -22,6 +22,9 @@ export default {
       backgroundSize:{
         '200': '200% 200%'
       },
+      backgroundPosition:{
+        'intialPosition': '0 0'
+      },
       keyframes:{
         'moveLoginBg': {
           '0%': { backgroundPosition: '0% 50%' },
@@ -30,7 +33,10 @@ export default {
         },
       },
       animation:{
-        'moveLoginBg': 'moveLoginBg 2s ease infinite'
+        'moveLoginBg': 'moveLoginBg 3s linear infinite',
+      },
+      backgroundImage: {
+        'test': 'url(./assets/test.svg)'
       }
     },
   },
