@@ -26,7 +26,7 @@ const LoginForm = () => {
       
       setUser(loginResponse.data.user);
       setIsAuthenticated(true);
-      navigate("/");
+      navigate("/dashboard");
 
     } catch (error) {
       

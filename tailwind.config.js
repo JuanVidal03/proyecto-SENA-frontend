@@ -36,7 +36,7 @@ export default {
         'moveLoginBg': 'moveLoginBg 3s linear infinite',
       },
       backgroundImage: {
-        'test': 'url(./assets/test.svg)'
+        'loginBg': 'url(./assets/lock-bg.jpg)'
       }
     },
   },

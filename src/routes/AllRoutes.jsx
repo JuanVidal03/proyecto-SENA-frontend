@@ -5,8 +5,9 @@ import ProtectedRoutes from "./Protected.routes.jsx";
 const Loader = lazy(() => import("../components/loader/Loader.jsx"));
 const Login = lazy(() => import("../pages/Login.jsx"));
 
-const Home = lazy(() => import("../pages/Home.jsx"));
+const Dashboard = lazy(() => import("../pages/Dashboard.jsx"));
 const Workers = lazy(() => import("../pages/Workers.jsx"));
+const Machines = lazy(() => import("../pages/Machines.jsx"));
 
 import UserContextProvider from "../context/user.context.jsx";
 import SharedContextProvider from "../context/shared.context.jsx";
@@ -21,9 +22,9 @@ const AllRoutes = () => {
                 <Route path='/login' element={<Login/>}/>
                 {/* rutas privadas */}
                 |<Route element={<ProtectedRoutes/>}>
-                    <Route path='/' element={
+                    <Route path='/dashboard' element={
                         <SharedContextProvider>
-                            <Home/>
+                            <Dashboard/>
                         </SharedContextProvider>
                     }/>
                     <Route path='/usuarios' element={
@@ -31,10 +32,10 @@ const AllRoutes = () => {
                             <Workers/>
                         </UserContextProvider>
                     }/>
-                    {/* <Route path='/maquinas' element={<Workers/>}/>
-                    <Route path='/procesos' element={<Workers/>}/>
+                    <Route path='/maquinas' element={<Machines/>}/>
+
+                    {/* <Route path='/procesos' element={<Workers/>}/>
                     <Route path='/archivos' element={<Workers/>}/>
-                    <Route path='/proveedores' element={<Workers/>}/>
                     <Route path='/estadisticas' element={<Workers/>}/> */}
                 </Route>
             </Routes>

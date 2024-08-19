@@ -21,9 +21,12 @@ export default function Login() {
           <LoginForm/>
         </div>
         <div className="w-[60%] h-screen">
-          <div className="w-full h-full flex justify-end items-end p-8 bg-200 bg-gradient-to-r from-azul-iconos via-[#4C39E0] to-[#867BF3] animate-moveLoginBg">
-            <p className="text-2xl italic w-full max-w-[600px] text-white text-right">En <span className="font-extrabold">{import.meta.env.VITE_COMPANY_NAME}</span>, estamos aquí para apoyarte en cada paso, creando soluciones innovadoras y eficientes para tus necesidades tecnológicas.</p>
+          <div className="w-full h-full bg-loginBg bg-right-bottom bg-cover bg-no-repeat">
+            {/* <p className="text-2xl italic w-full max-w-[600px] text-white text-right">En <span className="font-extrabold">{import.meta.env.VITE_COMPANY_NAME}</span>, estamos aquí para apoyarte en cada paso, creando soluciones innovadoras y eficientes para tus necesidades tecnológicas.</p> */}
           </div>
+          {/* <div className="w-full h-full flex justify-end items-end p-8 bg-200 bg-gradient-to-r from-azul-iconos via-[#4C39E0] to-[#867BF3] animate-moveLoginBg">
+            <p className="text-2xl italic w-full max-w-[600px] text-white text-right">En <span className="font-extrabold">{import.meta.env.VITE_COMPANY_NAME}</span>, estamos aquí para apoyarte en cada paso, creando soluciones innovadoras y eficientes para tus necesidades tecnológicas.</p>
+          </div> */}
         </div>
       </section>
 

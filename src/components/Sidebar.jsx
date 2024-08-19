@@ -13,7 +13,7 @@ import {
 const Sidebar = () => {
 
   const menuItems = [
-    { title: "Inicio", icon: faHouse, route: '/' },
+    { title: "Inicio", icon: faHouse, route: '/dashboard' },
     { title: "Usuarios", icon: faUser, route: '/usuarios' },
     { title: "Maquinas", icon: faGears, route: '/maquinas' },
     { title: "Procesos", icon: faPlantWilt, route: '/procesos' },
