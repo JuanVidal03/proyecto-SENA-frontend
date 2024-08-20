@@ -31,13 +31,19 @@ const Machines = () => {
         getAllMachinesService();
     }, []);
 
-    
+
     const createMachineService = async() => {
+
+        setLoading(true);
         const machineCreated = await createMachine();
 
-        if(!machineCreated.status) return toast.error("Error al crear la maquina.");
+        if(!machineCreated.status) {
+            setLoading(false);
+            toast.error("Error al crear la maquina.");
+        }
 
         if (machineCreated && machineCreated.status === 201) {
+            setLoading(false);
             toast.success(machineCreated.data.message);
         }
         setMachines([...machines, machineCreated.data.maquina]);
@@ -56,6 +62,7 @@ const Machines = () => {
                             <MachineCard
                                 key={maquina._id}
                                 maquina={maquina}
+                                isSlider={false}
                             />
                         ))
                     }

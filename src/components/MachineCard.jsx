@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGears } from "@fortawesome/free-solid-svg-icons";
 
-const MachineCard = ({ maquina }) => {
+const MachineCard = ({ maquina, isSlider }) => {
     return (
-        <div className="overflow-hidden w-full h-[350px] flex flex-col justify-center items-center bg-white rounded-lg shadow-userCard transition-all p-5 group hover:shadow-userCardHover hover:scale-105">
+        <div className={`overflow-hidden w-full h-[350px] flex flex-col justify-center items-center bg-white rounded-lg shadow-userCard transition-all p-5 group hover:shadow-userCardHover ${isSlider ? "hover:shadow-userCardHover" : "hover:scale-105"}`}>
             <div className={`h-[50%] relative flex justify-center items-center z-20 after:content-[''] after:rounded-full after:transition-all after:absolute after:w-[175%] after:h-[100%] after:top-[0%] after:-z-20 ${maquina.estado === "Activo" ? "after:bg-green-500" : maquina.estado === "Inactivo" ? "after:bg-red-500" : maquina.estado === "En Mantenimiento" && "after:bg-orange-500"} group-hover:after:h-[300%] group-hover:after:w-[300%] group-hover:after:scale-150 before:content-[''] before:opacity-0 group-hover:before:opacity-100 before:bg-white before:rounded-full before:transition-all before:absolute before:w-[175%] before:h-[100%] before:top-[0%] before:-z-10`}>
                 <FontAwesomeIcon className="text-[70px] text-white group-hover:text-gray-400" icon={faGears} />
             </div>

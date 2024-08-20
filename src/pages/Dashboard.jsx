@@ -8,12 +8,16 @@ const Loader = lazy(() => import("../components/loader/Loader.jsx"));
 const DashboaradLayout = lazy(() => import("../layout/Dashboarad.layout.jsx"));
 const Stadistics = lazy(() => import("../components/Statistics.jsx"));
 const Machines = lazy (() => import("../components/Machines.jsx"));
+const MachineCard = lazy(() => import("../components/MachineCard.jsx"));
 const UserCard = lazy (() => import("../components/UserCard.jsx"));
 const Files = lazy (() => import("../components/files/Files.jsx"));
 
 import { getAllUsers } from "../services/user.services.js";
+import { getAllMachines } from "../services/machines.services.js";
 
 import { AuthContext } from "../context/AuthProvider.context.jsx";
+import { UserContext } from "../context/user.context.jsx";
+import { MachineContext } from "../context/Machine.context.jsx";
 
 
 export default function Home() {
@@ -21,6 +25,8 @@ export default function Home() {
   document.title = `Inicio | ${import.meta.env.VITE_COMPANY_NAME}`;
 
   const { user } = useContext(AuthContext);
+  const { users, setUsers } = useContext(UserContext);
+  const { machines, setMachines } = useContext(MachineContext);
 
   const greetByTime = () => {
     
@@ -36,16 +42,19 @@ export default function Home() {
 
   }
 
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);  
-    const getUsersService = async() => {
+    const fetchServices = async() => {
       try {
 
         const usersService = await getAllUsers();
+        const machinesService = await getAllMachines();
         setUsers(usersService.users);
+        setMachines(machinesService.maquinas)
+
         setLoading(false);
 
       } catch (error) {
@@ -53,9 +62,10 @@ export default function Home() {
         setLoading(false);
       }
     }
-    getUsersService();
+    fetchServices();
 
   }, []);
+
 
 
   return (
@@ -77,27 +87,30 @@ export default function Home() {
 
               <section className="mb-8">
                 <h2 className="text-4xl font-semibold mb-4">Maquinas</h2>
-                <div className="flex justify-between gap-[2rem]">
-                  <Machines
-                    numberMachine="1"
-                    state="En proceso"
-                    operator="Juan Manuel"
-                  />
-                  <Machines
-                    numberMachine="1"
-                    state="En proceso"
-                    operator="Juan Manuel"
-                  />
-                  <Machines
-                    numberMachine="1"
-                    state="En proceso"
-                    operator="Juan Manuel"
-                  />
-                  <Machines
-                    numberMachine="1"
-                    state="En proceso"
-                    operator="Juan Manuel"
-                  />
+                <div>
+                <Splide
+                    options={{
+                      perPage: 4,
+                      type: "loop",
+                      perMove: 1,
+                      pagination: false,
+                      gap: "1rem",
+                      autoplay: true,
+                      pauseOnHover: true,
+                      interval: 2000
+                    }}
+                  >
+                    {
+                      machines.map(machine => (
+                        <SplideSlide key={machine._id}>
+                          <MachineCard
+                            maquina={machine}
+                            isSlider={true}
+                          />
+                        </SplideSlide>
+                      ))
+                    }
+                  </Splide>
                 </div>
               </section>
               <section className="mb-8">

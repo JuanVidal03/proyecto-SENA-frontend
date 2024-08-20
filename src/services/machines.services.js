@@ -12,7 +12,6 @@ export const getAllMachines = async() => {
 export const createMachine = async() => {
     try {
         const result = await axios.post("/maquinas");
-        console.log(result);
         return result;
     } catch (error) {
         return error.message;
