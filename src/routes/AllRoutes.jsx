@@ -1,5 +1,5 @@
 import { Suspense, lazy } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 
 import ProtectedRoutes from "./Protected.routes.jsx";
 const Loader = lazy(() => import("../components/loader/Loader.jsx"));
@@ -11,6 +11,7 @@ const Machines = lazy(() => import("../pages/Machines.jsx"));
 
 import UserContextProvider from "../context/user.context.jsx";
 import SharedContextProvider from "../context/shared.context.jsx";
+import MachineContextProvider from "../context/Machine.context.jsx";
 
 
 const AllRoutes = () => {
@@ -32,8 +33,12 @@ const AllRoutes = () => {
                             <Workers/>
                         </UserContextProvider>
                     }/>
-                    <Route path='/maquinas' element={<Machines/>}/>
-
+                    <Route path='/maquinas' element={
+                        <MachineContextProvider>
+                            <Machines/>
+                        </MachineContextProvider>
+                    }/>
+                    <Route path='/' element={<Navigate to="/dashboard" replace />}/>
                     {/* <Route path='/procesos' element={<Workers/>}/>
                     <Route path='/archivos' element={<Workers/>}/>
                     <Route path='/estadisticas' element={<Workers/>}/> */}
