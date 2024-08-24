@@ -17,3 +17,15 @@ export const createMachine = async() => {
         return error.message;
     }
 }
+
+export const deleteMachineById = async(id) => {
+    try {
+
+        const response = await axios.delete(`/maquinas/${id}`);
+        return response;
+        
+    } catch (error) {
+        console.log(error);
+        return error.message;
+    }
+}

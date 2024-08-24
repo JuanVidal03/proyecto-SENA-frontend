@@ -30,7 +30,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="w-full h-[60vh] flex bg-gradient-to-r from-azul-iconos to-azul-fuerte text-white rounded-bl-[50px]">
+    <nav className="w-full h-[55vh] flex bg-gradient-to-r from-azul-iconos to-azul-fuerte text-white rounded-bl-[50px]">
       <div className="w-full max-w-[25%] flex justify-center items-end pb-10">
         <img className="w-[45%] object-cover" src={imgLogoIndestec} alt="Logo de la empresa"/>
       </div>

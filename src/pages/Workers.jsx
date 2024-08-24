@@ -22,8 +22,6 @@ const Workers = () => {
   const [loading, setLoading] = useState(false);
   
   const { setModalState } = useContext(AuthContext);
-
-
   const { users, setUsers } = useContext(UserContext);
 
   useEffect(() => {
@@ -46,15 +44,6 @@ const Workers = () => {
 
   }, []);
 
-  const createUser = async() => {
-    try {
-      setModalState(true);
-
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   return (
     <Suspense fallback={<Loader/>}>
       <DashboaradLayout>
@@ -75,7 +64,7 @@ const Workers = () => {
               />
               <div className="flex justify-center items-center relative w-10 h-10 bg-white rounded-full">
                 <button
-                  onClick={createUser}
+                  onClick={() => setModalState(true)}
                   className="flex justify-center items-center relative z-50 w-full h-full"
                 >
                   <FontAwesomeIcon className="text-[1rem] text-azul-fuerte relative z-10 " icon={faPlus}/>

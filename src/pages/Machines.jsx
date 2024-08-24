@@ -68,7 +68,7 @@ const Machines = () => {
                     }
                     <div
                         onClick={createMachineService}
-                        className="overflow-hidden w-full h-[350px] flex gap-3 cursor-pointer flex-col justify-center items-center bg-transparent border-dotted border-2 border- rounded-lg transition-all p-5 group hover:bg-gray-100 shadow-userCard"
+                        className="overflow-hidden w-full h-[420px] flex gap-3 cursor-pointer flex-col justify-center items-center bg-transparent border-dotted border-2 rounded-lg transition-all p-5 group hover:bg-gray-100 hover:scale-105"
                     >
                         <FontAwesomeIcon className="text-gray-500 text-3xl" icon={faPlus}/>
                         <p className="text-gray-500">Crear maquina</p>
