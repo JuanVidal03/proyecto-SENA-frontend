@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 
-import profileImg from "../assets/login-bg.jpg"
 import Loader from "./loader/Loader.jsx";
 
 import { AuthContext } from "../context/AuthProvider.context.jsx";
@@ -12,15 +11,19 @@ import { UserContext } from "../context/user.context.jsx";
 
 import { register as registerService } from "../services/auth.services.js";
 
-const FormUser = ({ isUpdate }) => {
+const FormUser = () => {
 
     const { setModalState } = useContext(AuthContext);
-    const { users, setUsers } = useContext(UserContext);
+    const { users, setUsers, userToUpdate, setUserToUpdate } = useContext(UserContext);
 
     const [isPasswordActive, setIsPasswordActive] = useState(true);
     const [loading, setLoading] = useState(false);
 
-    const { handleSubmit, formState:{errors}, register } = useForm();
+    const { handleSubmit, formState:{errors}, register, reset } = useForm({
+        defaultValues: {
+            username: userToUpdate?.username || ""
+        }
+    });
 
     const handleFormUser = handleSubmit(async(data) => {
 
@@ -28,15 +31,21 @@ const FormUser = ({ isUpdate }) => {
         data.estado = JSON.parse(data.estado);
         
         try {
-            const registerResponse = await registerService(data);
 
-            if(registerResponse.status !== 200 || !registerResponse.status) return toast.error("Error al crear el usuario.");
-
-            setUsers([...users, registerResponse.data]);
-
+            if(!userToUpdate){
+                const registerResponse = await registerService(data);
+    
+                if(registerResponse.status !== 200 || !registerResponse.status) return toast.error("Error al crear el usuario.");
+                
+                setUsers([...users, registerResponse.data]);
+                toast.success("Usuario registrado exitosamente!");
+            } else{
+                alert("Actualizar!!!");
+            }
+            
             setLoading(false);
             setModalState(false);
-            toast.success("Usuario registrado exitosamente!");
+            reset();
             
         } catch (error) {
             setLoading(false);
@@ -47,20 +56,20 @@ const FormUser = ({ isUpdate }) => {
     return (
         <div>
             { loading && <Loader/> }
-            <h3 className="font-semibold text-2xl my-2">{ isUpdate ? "Actualizar usuario" : "Añadir usuario"}</h3>
+            <h3 className="font-semibold text-2xl my-2">{ userToUpdate ? "Actualizar usuario" : "Añadir usuario"}</h3>
             {
-                isUpdate && (
+                userToUpdate && (
                     <div>
-                        <img className="rounded-full w-20 h-20 border-4 border-white" src={profileImg} />
+                        <img className="rounded-full w-20 h-20 border-4 border-white bg-white" src={userToUpdate.foto.url} />
                         <div className="leading-4 mb-4">
-                            <h6 className="font-bold text-lg">Carlos Perez</h6>
-                            <p className="text-gray-500">carlosperez19@gmail.com</p>
+                            <h6 className="font-bold text-lg">{userToUpdate.nombreCompleto}</h6>
+                            <p className="text-gray-500">{userToUpdate.email}</p>
                         </div>
                     </div>
                 )
             }
 
-            <form className={`${!isUpdate && 'mt-8'} flex flex-col gap-4 h-full`} onSubmit={handleFormUser}>
+            <form onSubmit={handleFormUser} className={`${!userToUpdate && 'mt-8'} flex flex-col gap-4 h-full`}>
                 <div className="flex w-full flex-col gap-1 py-4 border-y">
                     <label>Nombre de usuario: *</label>
                     <input
@@ -316,8 +325,15 @@ const FormUser = ({ isUpdate }) => {
                 </div>
 
                 <div className="flex gap-4">
-                    <button onClick={() => setModalState(false)} className="border border-black text-lg rounded-lg w-full py-2 transition-all font-semibold hover:shadow-lg">Cancelar</button>
-                    <button className="bg-black text-white text-lg rounded-lg w-full py-2 transition-all font-semibold hover:shadow-lg">Agregar</button>
+                    <button onClick={(e) => {
+                        e.preventDefault();
+                        setModalState(false);
+                        setUserToUpdate(null);
+                    }} className="border border-black text-lg rounded-lg w-full py-2 transition-all font-semibold hover:shadow-lg">Cancelar</button>
+                    <button
+                        className="bg-black text-white text-lg rounded-lg w-full py-2 transition-all font-semibold hover:shadow-lg">
+                            {userToUpdate ? "Actualizar" : "Agregar"}
+                    </button>
                 </div>
             </form>
             

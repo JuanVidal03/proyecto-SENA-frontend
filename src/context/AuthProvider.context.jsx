@@ -35,7 +35,6 @@ const AuthContextProvider = ({children}) => {
                 setUser(res.data);
 
             } catch (error) {
-                console.log("Error al autenticar el usuario", error);
                 setIsAuthenticated(false);
                 setUser(null);
                 setLoading(false);

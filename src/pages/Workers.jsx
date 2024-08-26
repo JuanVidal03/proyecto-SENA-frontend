@@ -22,7 +22,7 @@ const Workers = () => {
   const [loading, setLoading] = useState(false);
   
   const { setModalState } = useContext(AuthContext);
-  const { users, setUsers } = useContext(UserContext);
+  const { users, setUsers, setUserToUpdate } = useContext(UserContext);
 
   useEffect(() => {
 
@@ -52,19 +52,22 @@ const Workers = () => {
         
         <div>
 
-          <Modal content={<FormUser isUpdate={false}/>}/>
+          <Modal content={<FormUser/>}/>
 
           <div className="flex justify-between items-center">
             <h1 className="text-3xl text-white">Usuarios registrados</h1>
             <div className="flex items-center gap-6">
-              <input
+              {/* <input
                 className="rounded-full p-2 outline-none px-4 text-gray-500"
                 type="text"
                 placeholder="Filtrar resultados"
-              />
+              /> */}
               <div className="flex justify-center items-center relative w-10 h-10 bg-white rounded-full">
                 <button
-                  onClick={() => setModalState(true)}
+                  onClick={() => {
+                    setModalState(true);
+                    setUserToUpdate(null);
+                  }}
                   className="flex justify-center items-center relative z-50 w-full h-full"
                 >
                   <FontAwesomeIcon className="text-[1rem] text-azul-fuerte relative z-10 " icon={faPlus}/>
@@ -78,7 +81,7 @@ const Workers = () => {
                 {
                   users?.map(user => (
                     <UserCard
-                      key={user._id}
+                      key={user.email}
                       id={user._id}
                       name={user.nombreCompleto}
                       username={user.username}
@@ -93,7 +96,13 @@ const Workers = () => {
                     />
                   ))
                 }
-                <div onClick={() => setModalState(true)} className="w-full h-[400px] rounded-lg flex justify-center items-center border-dotted border-2 transition-all cursor-pointer hover:bg-gray-100">
+                <div
+                  onClick={() => {
+                    setModalState(true);
+                    setUserToUpdate(null);
+                  }}
+                  className="w-full h-[400px] rounded-lg flex justify-center items-center border-dotted border-2 transition-all cursor-pointer hover:bg-gray-100"
+                >
                   <div className="flex flex-col justify-center items-center gap-2">
                     <FontAwesomeIcon className="text-3xl text-gray-500" icon={faPlus}/>
                     <p className="font-semibold text-gray-500">Crear usuario</p>

@@ -23,3 +23,29 @@ export const deleteUserById = async(id) => {
         return error;
     }
 }
+
+export const updateUserById = async(id , data) => {
+    try {
+
+        const response = await axios.put(`/usuarios/${id}`, data);
+        console.log(response);
+        return response;
+        
+    } catch (error) {
+        console.log(error);
+        return error
+    }
+}
+
+export const findUserById = async(id) => {
+    try {
+
+        const response = await axios.get(`/usuarios/${id}`);
+        return response.data;
+        
+    } catch (error) {
+        console.log(error);
+        return error;
+        
+    }
+}
