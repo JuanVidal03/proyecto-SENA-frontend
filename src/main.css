@@ -4,6 +4,7 @@
 @tailwind utilities;
 *{
     font-family: "Nunito Sans";
+    scroll-behavior: smooth;
 }
 .custom-scrollbar::-webkit-scrollbar{
     width: 5px;

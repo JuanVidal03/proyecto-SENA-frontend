@@ -8,6 +8,7 @@ const Login = lazy(() => import("../pages/Login.jsx"));
 const Dashboard = lazy(() => import("../pages/Dashboard.jsx"));
 const Workers = lazy(() => import("../pages/Workers.jsx"));
 const Machines = lazy(() => import("../pages/Machines.jsx"));
+const Home = lazy(() => import("../pages/Home.jsx"));
 
 import UserContextProvider from "../context/user.context.jsx";
 import SharedContextProvider from "../context/shared.context.jsx";
@@ -20,7 +21,9 @@ const AllRoutes = () => {
         <Suspense fallback={<Loader/>}>
             <Routes>
                 {/* rutas publicas */}
+                <Route path='/' element={<Home/>}/>
                 <Route path='/login' element={<Login/>}/>
+
                 {/* rutas privadas */}
                 |<Route element={<ProtectedRoutes/>}>
                     <Route path='/dashboard' element={
@@ -38,7 +41,7 @@ const AllRoutes = () => {
                             <Machines/>
                         </MachineContextProvider>
                     }/>
-                    <Route path='/' element={<Navigate to="/dashboard" replace />}/>
+
                     {/* <Route path='/procesos' element={<Workers/>}/>
                     <Route path='/archivos' element={<Workers/>}/>
                     <Route path='/estadisticas' element={<Workers/>}/> */}

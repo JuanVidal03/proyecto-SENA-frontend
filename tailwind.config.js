@@ -13,7 +13,8 @@ export default {
         'gris-suave': '#f2f2f2',
         'dark': "#1e1e1e",
         'naranja-suave': "#FC7820",
-        'naranja-fuerte': "#C32227"
+        'naranja-fuerte': "#C32227",
+        'custom-purple': '#8B11E2'
       },
       boxShadow:{
         'userCard': '0 .75rem 1.5rem rgba(18,38,63,.03)',
@@ -26,14 +27,14 @@ export default {
         'intialPosition': '0 0'
       },
       keyframes:{
-        'moveLoginBg': {
-          '0%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' },
-          '100%': { backgroundPosition: '0% 50%' },
+        'moveHero': {
+          '0%': { transform: 'translatey(-5px)' },
+          '50%': { transform: 'translatey(5px)' },
+          '100%': { transform: 'translatey(-5px)' },
         },
-      },
+      },  
       animation:{
-        'moveLoginBg': 'moveLoginBg 3s linear infinite',
+        'moveHero': 'moveHero 2.5s linear infinite',
       },
       backgroundImage: {
         'loginBg': 'url(./assets/lock-bg.jpg)'
