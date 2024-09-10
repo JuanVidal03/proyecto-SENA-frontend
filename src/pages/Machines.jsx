@@ -1,7 +1,7 @@
 import { Suspense, lazy, useEffect, useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 const DashboaradLayout = lazy(() => import("../layout/Dashboarad.layout.jsx"));
 const Loader = lazy(() => import("../components/loader/Loader.jsx"));
@@ -53,7 +53,6 @@ const Machines = () => {
     return (
         <Suspense fallback={<Loader/>}>
             <DashboaradLayout>
-                <ToastContainer/>
                 { loading && <Loader/> }
                 <h1 className="text-3xl text-white">Maquinas registradas</h1>
                 <div className="grid grid-cols-4 mt-10 gap-6">
@@ -68,7 +67,7 @@ const Machines = () => {
                     }
                     <div
                         onClick={createMachineService}
-                        className="overflow-hidden w-full h-[420px] flex gap-3 cursor-pointer flex-col justify-center items-center bg-transparent border-dotted border-2 rounded-lg transition-all p-5 group hover:bg-gray-100 hover:scale-105"
+                        className="overflow-hidden w-full h-[420px] flex gap-3 cursor-pointer flex-col justify-center items-center bg-transparent border-dotted border-2 rounded-lg transition-all bg-gray-50 p-5 group hover:bg-gray-100 hover:scale-105"
                     >
                         <FontAwesomeIcon className="text-gray-500 text-3xl" icon={faPlus}/>
                         <p className="text-gray-500">Crear maquina</p>
