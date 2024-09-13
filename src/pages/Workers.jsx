@@ -1,7 +1,6 @@
 import { Suspense, lazy, useEffect, useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { ToastContainer, toast } from "react-toastify";
 
 const DashboaradLayout = lazy(() => import("../layout/Dashboarad.layout.jsx"))
 const Loader = lazy(() => import("../components/loader/Loader.jsx"));
@@ -23,16 +22,21 @@ const Workers = () => {
   
   const { setModalState } = useContext(AuthContext);
   const { users, setUsers, setUserToUpdate } = useContext(UserContext);
+  const [usersFiltered, setUsersFiltered] = useState([]);
+  const [usersFilterInput, setUsersFilterInput] = useState("");
 
+  // get all users
   useEffect(() => {
 
     setLoading(true);
-    
+
     const getAllUsersService = async() => {
       try {
         
         const usersService = await getAllUsers();
+
         setUsers(usersService.users);
+        setUsersFiltered(usersService.users);
         setLoading(false);
 
       } catch (error) {
@@ -44,11 +48,30 @@ const Workers = () => {
 
   }, []);
 
-  return (
-    <Suspense fallback={<Loader/>}>
-      <DashboaradLayout>
+  // filter the users
+  useEffect(() => {
+    
+    const filterUsers = () => {
+    
+      const newUsers = users.filter(user =>
+        user.username.toLowerCase().includes(usersFilterInput.toLowerCase()) ||
+        user.nombreCompleto.toLowerCase().includes(usersFilterInput.toLowerCase()) ||
+        user.email.toLowerCase().includes(usersFilterInput.toLowerCase()) ||
+        user.telefono.includes(usersFilterInput) || 
+        user.tipoUsuario.toLowerCase().includes(usersFilterInput.toLowerCase())
+      );
 
-        <ToastContainer/>
+      newUsers.length === 0 ? setUsersFiltered(users) : setUsersFiltered(newUsers);
+
+    }
+    filterUsers();
+
+  }, [usersFilterInput]);
+
+
+  return (
+    <Suspense fallback={null}>
+      <DashboaradLayout>
         
         <div>
 
@@ -57,11 +80,12 @@ const Workers = () => {
           <div className="flex justify-between items-center">
             <h1 className="text-3xl text-white">Usuarios registrados</h1>
             <div className="flex items-center gap-6">
-              {/* <input
+              <input
+                onChange={(e) => setUsersFilterInput(e.target.value)}
                 className="rounded-full p-2 outline-none px-4 text-gray-500"
                 type="text"
                 placeholder="Filtrar resultados"
-              /> */}
+              />
               <div className="flex justify-center items-center relative w-10 h-10 bg-white rounded-full">
                 <button
                   onClick={() => {
@@ -79,9 +103,9 @@ const Workers = () => {
             loading ? <Loader/> : (
               <div className="grid grid-cols-4 w-full auto-rows-auto gap-8 mt-8">
                 {
-                  users?.map(user => (
+                  usersFiltered.map(user => (
                     <UserCard
-                      key={user.email}
+                      key={user._id}
                       id={user._id}
                       name={user.nombreCompleto}
                       username={user.username}
@@ -101,8 +125,7 @@ const Workers = () => {
                     setModalState(true);
                     setUserToUpdate(null);
                   }}
-                  className="w-full h-[400px] rounded-lg flex justify-center items-center border-dotted border-2 transition-all cursor-pointer hover:bg-gray-100"
-                >
+                  className="w-full h-[400px] rounded-lg flex justify-center items-center border-dotted border-2 transition-all cursor-pointer hover:bg-gray-100 bg-gray-50">
                   <div className="flex flex-col justify-center items-center gap-2">
                     <FontAwesomeIcon className="text-3xl text-gray-500" icon={faPlus}/>
                     <p className="font-semibold text-gray-500">Crear usuario</p>

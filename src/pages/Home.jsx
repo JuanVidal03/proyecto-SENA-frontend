@@ -21,7 +21,7 @@ const Home = () => {
     document.title = `Inicio | ${import.meta.env.VITE_COMPANY_NAME}`;
 
     return (
-        <Suspense fallback={<Loader/>}>
+        <Suspense fallback={null}>
             <div className="bg-dark text-white">
 
                 <section id="hero" className="w-full flex flex-col items-center h-screen after:absolute after:content-[''] after:w-[90%] after:h-[95%] after:top-[-10%] after:left-[-20%] after:rounded-[100px] after:bg-custom-purple after:z-10 after:rotate-[170deg]">

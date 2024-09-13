@@ -22,7 +22,7 @@ import { MachineContext } from "../context/Machine.context.jsx";
 
 export default function Home() {
 
-  document.title = `Inicio | ${import.meta.env.VITE_COMPANY_NAME}`;
+  document.title = `Dashboard | ${import.meta.env.VITE_COMPANY_NAME}`;
 
   const { user } = useContext(AuthContext);
   const { users, setUsers } = useContext(UserContext);

@@ -26,11 +26,12 @@ const UserCard = ({ name, username, document, userType, img, status, phone, addr
 
         if (!deleteUserResponse.status || deleteUserResponse.status !== 200) return toast.error("Error al eliminar el usuario.");
 
-        if (deleteUserResponse.status === 200) return toast.success(deleteUserResponse.data.message);
-  
         const findUserIndex = users.findIndex(user => user._id === id);
         users.splice(findUserIndex, 1);
         setUsers([...users]);
+
+        if (deleteUserResponse.status === 200) return toast.success(deleteUserResponse.data.message);
+  
 
       }
 
@@ -52,7 +53,7 @@ const UserCard = ({ name, username, document, userType, img, status, phone, addr
 
 
   return (
-    <div className="w-full h-[400px] bg-white rounded-lg flex flex-col px-4 py-8 items-center justify-center shadow-userCard boder transition-all hover:shadow-userCardHover hover:scale-105">
+    <div className={`w-full h-[400px] bg-white rounded-lg flex flex-col px-4 py-8 items-center justify-center shadow-userCard boder transition-all hover:shadow-userCardHover ${iconsActive && "hover:scale-105"}`}>
       <figure className="relative mb-4">
         <img
           className="w-24 h-24 rounded-full object-cover"

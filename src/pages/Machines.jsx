@@ -51,7 +51,7 @@ const Machines = () => {
 
 
     return (
-        <Suspense fallback={<Loader/>}>
+        <Suspense fallback={null}>
             <DashboaradLayout>
                 { loading && <Loader/> }
                 <h1 className="text-3xl text-white">Maquinas registradas</h1>
