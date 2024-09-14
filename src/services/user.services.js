@@ -28,7 +28,6 @@ export const updateUserById = async(id , data) => {
     try {
 
         const response = await axios.put(`/usuarios/${id}`, data);
-        console.log(response);
         return response;
         
     } catch (error) {

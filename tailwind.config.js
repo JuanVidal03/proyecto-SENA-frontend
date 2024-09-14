@@ -12,9 +12,8 @@ export default {
         'azul-iconos': '#041090',
         'gris-suave': '#f2f2f2',
         'dark': "#1e1e1e",
-        'naranja-suave': "#FC7820",
-        'naranja-fuerte': "#C32227",
-        'custom-purple': '#8B11E2'
+        'custom-purple': '#8B11E2',
+        'gray-body': '#F8F8FB',
       },
       boxShadow:{
         'userCard': '0 .75rem 1.5rem rgba(18,38,63,.03)',

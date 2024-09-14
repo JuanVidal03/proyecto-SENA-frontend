@@ -8,7 +8,7 @@ const App = () => {
 
   return (
     <AuthContextProvider>
-      <ToastContainer/>
+      <ToastContainer stacked closeOnClick/>
       <BrowserRouter>
         <AllRoutes/>
       </BrowserRouter>

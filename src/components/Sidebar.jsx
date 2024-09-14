@@ -2,23 +2,23 @@ import { NavLink  } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouse,
-  faUser,
   faChartLine,
-  faNoteSticky,
   faPlantWilt,
   faUsers,
   faGears,
+  faLayerGroup,
+  faLeaf
 } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = () => {
 
   const menuItems = [
     { title: "Inicio", icon: faHouse, route: '/dashboard' },
-    { title: "Usuarios", icon: faUser, route: '/usuarios' },
+    { title: "Usuarios", icon: faUsers, route: '/usuarios' },
     { title: "Maquinas", icon: faGears, route: '/maquinas' },
-    { title: "Procesos", icon: faPlantWilt, route: '/procesos' },
-    { title: "Archivos", icon: faNoteSticky, route: '/archivos' },
-    { title: "Estadisticas", icon: faChartLine, route: '/estadisticas' }
+    { title: "Procesos", icon: faLeaf, route: '/procesos' },
+    { title: "Variedades", icon: faLayerGroup, route: '/variedades' },
+    { title: "Seguimientos", icon: faChartLine, route: '/seguimientos' }
   ]
 
   return (
