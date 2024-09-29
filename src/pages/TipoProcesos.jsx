@@ -20,6 +20,9 @@ const TipoProcesos = () => {
   const { tipoProcesos, setTipoProcesos } = useContext(TipoProcesoContext);
 
   const [loading, setLoading] = useState(false);
+  const [filteredTipoProcesos, setFilteredTipoProcesos] = useState([]);
+  const [tipoProcesoFilterInput, setTipoProcesoFilterInput] = useState("");
+
 
   // get all tipo procesos
   useEffect(() => {
@@ -30,16 +33,36 @@ const TipoProcesos = () => {
 
         const tipoProcesos = await getAllTipoProcesos();
         setTipoProcesos(tipoProcesos.data.tiposProcesos);
+        setFilteredTipoProcesos(tipoProcesos.data.tiposProcesos);
         setLoading(false);
 
       } catch (error) {
-        console.log(error);
         setLoading(false);
       }
     };
 
     getAllTipoProcesosService();
   }, []);
+
+
+  //filter tipo procesos
+  useEffect(() => {
+    
+    const filterTipoProcesos = () => {
+    
+      const newTipoProcesos = tipoProcesos.filter(tipoProceso =>
+        tipoProceso.nombre.toLowerCase().includes(tipoProcesoFilterInput.toLowerCase()) ||
+        tipoProceso.descripcion.toLowerCase().includes(tipoProcesoFilterInput.toLowerCase())
+      );
+      console.log(newTipoProcesos);
+
+      newTipoProcesos.length === 0 ? setFilteredTipoProcesos(tipoProcesos) : setFilteredTipoProcesos(newTipoProcesos);
+
+    }
+    filterTipoProcesos();
+
+  }, [tipoProcesoFilterInput]);
+
 
   return (
     <Suspense fallback={null}>
@@ -52,7 +75,7 @@ const TipoProcesos = () => {
           <h1 className="text-3xl text-white">Tipos de procesos</h1>
           <div className="flex gap-6">
             <input
-                onChange={(e) => setUsersFilterInput(e.target.value)}
+                onChange={(e) => setTipoProcesoFilterInput(e.target.value)}
                 className="rounded-full p-2 outline-none px-4 text-gray-500"
                 type="text"
                 placeholder="Filtrar resultados"
@@ -76,7 +99,7 @@ const TipoProcesos = () => {
 
         <div className="grid grid-cols-3 gap-8 mt-8">
             {
-                tipoProcesos?.map(tipoProceso => (
+                filteredTipoProcesos?.map(tipoProceso => (
                     <TipoProcesoCard key={tipoProceso._id} tipoProceso={tipoProceso}/>
                 ))
             }
@@ -84,7 +107,7 @@ const TipoProcesos = () => {
               onClick={() => {
                 setModalState(true);
               }}
-              className="h-[350px] flex gap-3 cursor-pointer flex-col justify-center items-center bg-transparent border-dotted border-2 rounded-lg transition-all bg-gray-body p-5 group hover:bg-gray-100 hover:scale-105"
+              className="h-[350px] flex gap-3 cursor-pointer flex-col justify-center items-center bg-transparent border-dotted border-2 rounded-lg transition-all p-5 group hover:bg-gray-200 bg-gray-100 hover:scale-105"
             >
               <FontAwesomeIcon className="text-gray-500 text-3xl" icon={faPlus} />
               <h6 className="text-gray-500">Crear tipo de proceso</h6>

@@ -10,6 +10,8 @@ const Workers = lazy(() => import("../pages/Workers.jsx"));
 const Machines = lazy(() => import("../pages/Machines.jsx"));
 const TipoProcesos = lazy(() =>import("../pages/TipoProcesos.jsx"));
 const Home = lazy(() => import("../pages/Home.jsx"));
+const Variedad = lazy(() => import("../pages/Variedad.jsx"));
+const Seguimientos = lazy(() => import("../pages/Seguimientos.jsx"));
 
 import UserContextProvider from "../context/user.context.jsx";
 import SharedContextProvider from "../context/shared.context.jsx";
@@ -20,14 +22,14 @@ import TipoProcesoContextProvider from "../context/TipoProceso.context.jsx";
 const AllRoutes = () => {
 
     return (
-        <Suspense fallback={<Loader/>}>
+        <Suspense fallback={null}>
             <Routes>
                 {/* rutas publicas */}
                 <Route path='/' element={<Home/>}/>
                 <Route path='/login' element={<Login/>}/>
 
                 {/* rutas privadas */}
-                |<Route element={<ProtectedRoutes/>}>
+                <Route element={<ProtectedRoutes/>}>
                     <Route path='/dashboard' element={
                         <SharedContextProvider>
                             <Dashboard/>
@@ -49,8 +51,11 @@ const AllRoutes = () => {
                             <TipoProcesos/>
                         </TipoProcesoContextProvider>
                     }/>
-                    {/* <Route path='/archivos' element={<Workers/>}/> */}
-                    {/* <Route path='/estadisticas' element={<Workers/>}/> */}
+
+                    <Route path="/variedades" element={<Variedad/>}/>
+
+                    <Route path="/seguimientos" element={<Seguimientos/>}/>
+
                 </Route>
             </Routes>
         </Suspense>
