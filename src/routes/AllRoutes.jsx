@@ -12,11 +12,13 @@ const TipoProcesos = lazy(() =>import("../pages/TipoProcesos.jsx"));
 const Home = lazy(() => import("../pages/Home.jsx"));
 const Variedad = lazy(() => import("../pages/Variedad.jsx"));
 const Seguimientos = lazy(() => import("../pages/Seguimientos.jsx"));
+const SingleSeguimineto = lazy(() => import("../pages/SingleSeguimineto.jsx"));
 
 import UserContextProvider from "../context/user.context.jsx";
 import SharedContextProvider from "../context/shared.context.jsx";
 import MachineContextProvider from "../context/Machine.context.jsx";
 import TipoProcesoContextProvider from "../context/TipoProceso.context.jsx";
+import SeguimientoContextProvider from "../context/Seguimiento.context.jsx";
 
 
 const AllRoutes = () => {
@@ -54,7 +56,17 @@ const AllRoutes = () => {
 
                     <Route path="/variedades" element={<Variedad/>}/>
 
-                    <Route path="/seguimientos" element={<Seguimientos/>}/>
+                    <Route path="/seguimientos" element={
+                        <SeguimientoContextProvider>
+                            <Seguimientos/>
+                        </SeguimientoContextProvider>
+                    }/>
+
+                    <Route path="/seguimiento/:id" element={
+                        <SeguimientoContextProvider>
+                            <SingleSeguimineto/>
+                        </SeguimientoContextProvider>
+                    }/>
 
                 </Route>
             </Routes>

@@ -54,7 +54,6 @@ const TipoProcesos = () => {
         tipoProceso.nombre.toLowerCase().includes(tipoProcesoFilterInput.toLowerCase()) ||
         tipoProceso.descripcion.toLowerCase().includes(tipoProcesoFilterInput.toLowerCase())
       );
-      console.log(newTipoProcesos);
 
       newTipoProcesos.length === 0 ? setFilteredTipoProcesos(tipoProcesos) : setFilteredTipoProcesos(newTipoProcesos);
 

@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense, lazy } from "react";
+import { useState, useEffect, Suspense, lazy, useContext } from "react";
 import { toast } from "react-toastify";
 
 const DashboaradLayout = lazy(() => import("../layout/Dashboarad.layout.jsx"));
@@ -7,10 +7,13 @@ const Loader = lazy(() => import("../components/loader/Loader.jsx"));
 
 import { getAllSeguimientos } from "../services/seguimiento.services.js";
 import { chartSchema } from "../utils/chartSchema.js";
+import { SeguimientoContext } from "../context/Seguimiento.context.jsx";
 
 const Seguimientos = () => {
 
     document.title = `Seguimientos | ${import.meta.env.VITE_COMPANY_NAME}`;
+
+    const { setSeguimiento } = useContext(SeguimientoContext);
 
     const [seguimientos, setSeguimientos] = useState([]);
     const [chartsToRender, setChartsToRender] = useState([]);
@@ -41,6 +44,9 @@ const Seguimientos = () => {
     }, [seguimientos]);
 
 
+    // set the sigle seguimiento
+    const handleSigleSeguimiento = (seguimiento) => setSeguimiento(seguimiento);
+
     return (
         <Suspense fallback={null}>
             <DashboaradLayout>
@@ -50,10 +56,11 @@ const Seguimientos = () => {
                 <section className="grid grid-cols-2 gap-8 mt-8">
                         {
                             chartsToRender.map(chart => (
-                                <ChartCard
-                                    key={chart._id}
-                                    chart={chart}
-                                />
+                                <div key={chart._id} onClick={() => handleSigleSeguimiento(chart)}>
+                                    <ChartCard
+                                        chart={chart}
+                                    />
+                                </div>
                             ))
                         }
                 </section>
