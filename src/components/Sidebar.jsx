@@ -17,7 +17,7 @@ const Sidebar = () => {
     { title: "Usuarios", icon: faUsers, route: '/usuarios' },
     { title: "Maquinas", icon: faGears, route: '/maquinas' },
     { title: "Procesos", icon: faLeaf, route: '/procesos' },
-    { title: "Variedades", icon: faLayerGroup, route: '/variedades' },
+    // { title: "Variedades", icon: faLayerGroup, route: '/variedades' },
     { title: "Seguimientos", icon: faChartLine, route: '/seguimientos' }
   ]
 
